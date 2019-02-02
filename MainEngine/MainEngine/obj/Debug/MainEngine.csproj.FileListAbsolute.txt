@@ -1,0 +1,7 @@
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\MainEngine.exe.config
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\MainEngine.exe
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\MainEngine.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Debug\MainEngine.csprojAssemblyReference.cache
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Debug\MainEngine.csproj.CoreCompileInputs.cache
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Debug\MainEngine.exe
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Debug\MainEngine.pdb
