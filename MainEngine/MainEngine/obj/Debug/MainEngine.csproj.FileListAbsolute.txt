@@ -5,3 +5,9 @@ C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\D
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Debug\MainEngine.csproj.CoreCompileInputs.cache
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Debug\MainEngine.exe
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Debug\MainEngine.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Debug\MainEngine.csproj.CopyComplete
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\SecuritySafetyDecision.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\SecuritySafetyDecision.pdb

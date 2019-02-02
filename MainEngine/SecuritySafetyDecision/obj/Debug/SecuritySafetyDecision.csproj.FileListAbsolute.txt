@@ -1,0 +1,10 @@
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\bin\Debug\SecuritySafetyDecision.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\bin\Debug\SecuritySafetyDecision.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Debug\SecuritySafetyDecision.csprojAssemblyReference.cache
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Debug\SecuritySafetyDecision.csproj.CoreCompileInputs.cache
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Debug\SecuritySafetyDecision.csproj.CopyComplete
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Debug\SecuritySafetyDecision.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Debug\SecuritySafetyDecision.pdb
