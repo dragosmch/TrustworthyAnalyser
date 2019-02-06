@@ -15,9 +15,8 @@ namespace AppThatFailsEveryOtherTime
             {
                 randomNumber = random.Next(0, 2);
             }
-            if (randomNumber == 1)
-                throw new Exception("The program fails");
-            Thread.Sleep(5000);
+            if (randomNumber == 1) throw new Exception("The program fails");
+            Thread.Sleep(60000);
         }
     }
 }
