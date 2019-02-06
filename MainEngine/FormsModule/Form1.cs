@@ -75,12 +75,12 @@ namespace FormsModule
         private void button2_Click(object sender, EventArgs e)
         {
             string fileLocation = fileLocationBox.Text;
-            if (fileLocation != null)
+            if (fileLocation != null && fileLocation != "")
             {
-                //button2.Enabled = false;
+                button2.Enabled = false;
                 OutputResults(TrustworthyAnalyzer.ReturnResults(fileLocation));
             }
-            //button2.Enabled = true;
+            button2.Enabled = true;
         }
 
         private void label3_Click(object sender, EventArgs e)

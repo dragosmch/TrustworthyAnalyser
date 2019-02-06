@@ -15,5 +15,6 @@
         public bool Gs { get; set; }
         public bool Authenticode { get; set; }
         public bool DotNet { get; set; }
+        public string Path { get; set; }
     }
 }

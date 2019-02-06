@@ -7,3 +7,4 @@ C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDe
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Debug\SecuritySafetyModule.csproj.CopyComplete
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Debug\SecuritySafetyDecision.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Debug\SecuritySafetyDecision.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Debug\SecuritySafetyModule.csprojAssemblyReference.cache
