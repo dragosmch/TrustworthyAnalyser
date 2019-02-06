@@ -1,8 +1,10 @@
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\MainEngine.exe.config
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\MainEngine.exe
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\MainEngine.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\AvailabilityDecision.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\Newtonsoft.Json.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\SecuritySafetyDecision.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\AvailabilityDecision.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\SecuritySafetyDecision.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\Newtonsoft.Json.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\Newtonsoft.Json.xml

@@ -3,6 +3,7 @@ C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDe
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\bin\Release\Newtonsoft.Json.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\bin\Release\Newtonsoft.Json.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\bin\Release\Newtonsoft.Json.xml
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Release\SecuritySafetyDecision.csprojAssemblyReference.cache
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Release\SecuritySafetyDecision.csproj.CoreCompileInputs.cache
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Release\SecuritySafetyDecision.csproj.CopyComplete
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\SecuritySafetyDecision\obj\Release\SecuritySafetyDecision.dll

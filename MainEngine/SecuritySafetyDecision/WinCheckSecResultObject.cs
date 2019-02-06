@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace SecuritySafetyDecision
+﻿namespace SecuritySafetyModule
 {
     public class WinCheckSecResultObject
     {

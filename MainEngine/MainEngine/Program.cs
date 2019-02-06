@@ -1,43 +1,56 @@
 ﻿using System;
-using AvailabilityDecision;
+using System.Diagnostics;
+using System.Threading;
+using AvailabilityModule;
+using SecuritySafetyModule;
 
 namespace MainEngine
 {
     class Program
     {
-        private static string TestFileLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\PhotoScapeSetup.exe";
-
+        //private static string TestFileLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\PhotoScapeSetup.exe";
+        private static string TestFileLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFailsEveryOtherTime.exe";
+        public static TrustworthinessResult TrustworthinessResult = new TrustworthinessResult();
    
         static void Main(string[] args)
         {
+            Stopwatch clock = new Stopwatch();
+            clock.Start();
             string fileToAnalyse = args.Length == 1 ? args[0] : TestFileLocation;
-            int result = AvailabilityRunner.RunExecutable(fileToAnalyse);
-            //GetSecuritySafetyDecision(fileToAnalyse);
-
+            GetAvailabilityDecision(fileToAnalyse);
+            GetSecuritySafetyDecision(fileToAnalyse);
+            OutputResults();
+            long timePassed = clock.ElapsedMilliseconds / 1000;
         }
 
+        private static void OutputResults()
+        {
+            int totalResult = TrustworthinessResult.Availability + TrustworthinessResult.Safety + TrustworthinessResult.Security;
+            if (totalResult >= 2)
+                ConsoleWriteLineWithColour("Trustworthy", ConsoleColor.Green);
+            else if (totalResult == 0)
+                ConsoleWriteLineWithColour("Not Trustworthy", ConsoleColor.Red);
+            else
+                ConsoleWriteLineWithColour("Inconclusive result", ConsoleColor.Yellow);
+            Thread.Sleep(5000);
+        }
+
+        private static void GetAvailabilityDecision(string fileToAnalyse)
+        {
+            TrustworthinessResult.Availability = AvailabilityDecision.GetAvailabilityResult(fileToAnalyse);
+        }
         private static void GetSecuritySafetyDecision(string fileToAnalyse)
         {
-            int securitySafetyPercentage = SecuritySafetyDecision.SecuritySafetyDecision.GetSecuritySafetyPercentage(fileToAnalyse);
-            Console.WriteLine(securitySafetyPercentage);
-            if (securitySafetyPercentage >= 80)
-            {
-                Console.BackgroundColor = ConsoleColor.Green;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Trustworthy!");
-                Console.ResetColor();
-            }
-            else if (securitySafetyPercentage <= 40)
-            {
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("NOT Trustworthy!");
-                Console.ResetColor();
-            }
-            else
-            {
-                Console.WriteLine("Inconclusive!");
-            }
+            int decision = SecuritySafetyDecision.GetSecuritySafetyResult(fileToAnalyse);
+            TrustworthinessResult.Security = decision;
+            TrustworthinessResult.Safety = decision;
+        }
+
+        private static void ConsoleWriteLineWithColour(string text, ConsoleColor colour)
+        {
+            Console.ForegroundColor = colour;
+            Console.WriteLine(text);
+            Console.ResetColor();
         }
     }
 }

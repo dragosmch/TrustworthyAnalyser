@@ -1,19 +1,21 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading;
-
-namespace SecuritySafetyDecision
+﻿namespace SecuritySafetyModule
 {
     public static class SecuritySafetyDecision
     {
 
-        private const string ScriptLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\WinCheckSec\build\Release\winchecksec.exe";
-        private const string TestFileLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\PhotoScapeSetup.exe";
-        private static string outputResults = "";
-
-        public static int GetSecuritySafetyPercentage(string fileLocation)
+        public static int GetSecuritySafetyResult(string fileLocation)
         {
-            var resultObject = GetWinCheckSecResultObject(fileLocation);
+            int securitySafetyPercentage = GetSecuritySafetyPercentage(fileLocation);
+            if (securitySafetyPercentage >= 80)
+                return 1;
+            else if (securitySafetyPercentage <= 40)
+                return -1;
+            return 0;
+        }
+
+        private static int GetSecuritySafetyPercentage(string fileLocation)
+        {
+            var resultObject = SecuritySafetyRunner.GetWinCheckSecResultObject(fileLocation);
             int percentage = 0;
             if (resultObject.Aslr) percentage += 20;
             if (resultObject.DynamicBase) percentage += 20;
@@ -29,54 +31,6 @@ namespace SecuritySafetyDecision
             if (resultObject.ForceIntegrity) percentage += 1;
 
             return percentage;
-        }
-
-        public static WinCheckSecResultObject GetWinCheckSecResultObject(string fileLocation)
-        {
-            CallWinCheckSec(fileLocation);
-            if (outputResults != "")
-            {
-                var resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject<WinCheckSecResultObject>(outputResults);
-                return resultObject;
-            }
-            return null;
-        }
-
-        static void CallWinCheckSec(string fileLocation)
-        {
-            string fileToAnalyse = fileLocation != null ? fileLocation : TestFileLocation;
-            ProcessStartInfo startInfo = new ProcessStartInfo()
-            {
-                FileName = ScriptLocation,
-                Arguments = "-j " + fileToAnalyse,
-                WindowStyle = ProcessWindowStyle.Hidden,
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                CreateNoWindow = true
-            };
-
-            try
-            {
-                // Start the process with the info we specified.
-                // Call WaitForExit and then the using statement will close.
-                using (Process exeProcess = Process.Start(startInfo))
-                {
-                    exeProcess.OutputDataReceived += OnOutputDataReceived;
-                    exeProcess.BeginOutputReadLine();
-                    exeProcess.WaitForExit();
-                    Thread.Sleep(5000);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                // Log error.
-            }
-        }
-
-        static void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            outputResults += e.Data;
         }
     }
 }

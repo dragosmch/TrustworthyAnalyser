@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainEngine", "MainEngine\MainEngine.csproj", "{84B55137-014B-448C-97DE-FC3C7D7B90E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecuritySafetyDecision", "SecuritySafetyDecision\SecuritySafetyDecision.csproj", "{799EAED5-0479-4760-8421-DBB73D17CD27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecuritySafetyModule", "SecuritySafetyDecision\SecuritySafetyModule.csproj", "{799EAED5-0479-4760-8421-DBB73D17CD27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvailabilityDecision", "AvailabilityDecision\AvailabilityDecision.csproj", "{284610F8-7924-4DBD-95FC-4C9DE5353916}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvailabilityModule", "AvailabilityDecision\AvailabilityModule.csproj", "{284610F8-7924-4DBD-95FC-4C9DE5353916}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

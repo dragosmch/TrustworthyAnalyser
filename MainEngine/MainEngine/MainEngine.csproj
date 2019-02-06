@@ -32,6 +32,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -48,19 +58,23 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrustworthinessResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AvailabilityDecision\AvailabilityDecision.csproj">
+    <ProjectReference Include="..\AvailabilityDecision\AvailabilityModule.csproj">
       <Project>{284610f8-7924-4dbd-95fc-4c9de5353916}</Project>
-      <Name>AvailabilityDecision</Name>
+      <Name>AvailabilityModule</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SecuritySafetyDecision\SecuritySafetyDecision.csproj">
+    <ProjectReference Include="..\SecuritySafetyDecision\SecuritySafetyModule.csproj">
       <Project>{799EAED5-0479-4760-8421-DBB73D17CD27}</Project>
-      <Name>SecuritySafetyDecision</Name>
+      <Name>SecuritySafetyModule</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
