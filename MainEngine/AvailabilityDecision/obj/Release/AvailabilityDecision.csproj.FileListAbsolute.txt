@@ -1,0 +1,2 @@
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Release\AvailabilityDecision.csprojAssemblyReference.cache
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Release\AvailabilityDecision.csproj.CoreCompileInputs.cache

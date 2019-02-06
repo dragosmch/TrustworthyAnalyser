@@ -1,60 +1,43 @@
-﻿using SecuritySafetyDecision;
-using System;
-using System.Diagnostics;
-using System.Threading;
+﻿using System;
+using AvailabilityDecision;
 
 namespace MainEngine
 {
     class Program
     {
-        private const string ScriptLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\WinCheckSec\build\Release\winchecksec.exe";
-        private const string TestFileLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\PhotoScapeSetup.exe";
-        private static string outputResults = "";
+        private static string TestFileLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\PhotoScapeSetup.exe";
 
+   
         static void Main(string[] args)
         {
-            CallWinCheckSec();
-            if (outputResults != "")
-            {
-                var resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject<WinCheckSecResultObject>(outputResults);
-            }
+            string fileToAnalyse = args.Length == 1 ? args[0] : TestFileLocation;
+            int result = AvailabilityRunner.RunExecutable(fileToAnalyse);
+            //GetSecuritySafetyDecision(fileToAnalyse);
+
         }
 
-        static void CallWinCheckSec()
+        private static void GetSecuritySafetyDecision(string fileToAnalyse)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo()
+            int securitySafetyPercentage = SecuritySafetyDecision.SecuritySafetyDecision.GetSecuritySafetyPercentage(fileToAnalyse);
+            Console.WriteLine(securitySafetyPercentage);
+            if (securitySafetyPercentage >= 80)
             {
-                FileName = ScriptLocation,
-                Arguments = "-j " + TestFileLocation,
-                WindowStyle = ProcessWindowStyle.Hidden,
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                CreateNoWindow = true
-            };
-
-            try
-            {
-                // Start the process with the info we specified.
-                // Call WaitForExit and then the using statement will close.
-                using (Process exeProcess = Process.Start(startInfo))
-                {
-                    exeProcess.OutputDataReceived += OnOutputDataReceived;
-                    exeProcess.BeginOutputReadLine();
-                    exeProcess.WaitForExit();
-                    Thread.Sleep(5000);
-                }
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Trustworthy!");
+                Console.ResetColor();
             }
-            catch (Exception e)
+            else if (securitySafetyPercentage <= 40)
             {
-                Console.WriteLine(e);
-                // Log error.
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("NOT Trustworthy!");
+                Console.ResetColor();
             }
-        }
-
-        static void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            outputResults += e.Data;
-            Console.WriteLine(e.Data);
+            else
+            {
+                Console.WriteLine("Inconclusive!");
+            }
         }
     }
 }

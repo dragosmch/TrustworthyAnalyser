@@ -54,6 +54,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AvailabilityDecision\AvailabilityDecision.csproj">
+      <Project>{284610f8-7924-4dbd-95fc-4c9de5353916}</Project>
+      <Name>AvailabilityDecision</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SecuritySafetyDecision\SecuritySafetyDecision.csproj">
       <Project>{799EAED5-0479-4760-8421-DBB73D17CD27}</Project>
       <Name>SecuritySafetyDecision</Name>

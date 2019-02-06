@@ -5,10 +5,7 @@ namespace SecuritySafetyDecision
     public class WinCheckSecResultObject
     {
         public bool DynamicBase { get; set; }
-
         public bool Aslr { get; set; }
-
-
         public bool HighEntropyVa { get; set; }
         public bool ForceIntegrity { get; set; }
         public bool Isolation { get; set; }
