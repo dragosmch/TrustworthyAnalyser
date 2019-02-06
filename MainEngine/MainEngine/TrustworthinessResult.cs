@@ -8,4 +8,11 @@
         //public int Resilience;
         //public int Reliability;
     }
+
+    public enum TrustworthyApplicationLevel
+    {
+        Trustworthy,
+        NotTrustworthy,
+        Inconclusive
+    }
 }
