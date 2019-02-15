@@ -1,5 +1,3 @@
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\MainEngine.exe.config
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\MainEngine.exe
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\MainEngine.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\AvailabilityDecision.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\Newtonsoft.Json.dll
@@ -11,5 +9,7 @@ C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\R
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Release\MainEngine.csprojAssemblyReference.cache
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Release\MainEngine.csproj.CoreCompileInputs.cache
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Release\MainEngine.csproj.CopyComplete
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Release\MainEngine.exe
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Release\MainEngine.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\MainEngine.dll.config
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Release\MainEngine.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\obj\Release\MainEngine.dll

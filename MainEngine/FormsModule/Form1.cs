@@ -1,5 +1,6 @@
 ﻿using MainEngine;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace FormsModule
@@ -16,12 +17,16 @@ namespace FormsModule
 
         void Form1_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Link;
         }
 
         void Form1_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length == 1)
+            {
+                fileLocationBox.Text = files[0];
+            }
             foreach (string file in files) Console.WriteLine(file);
         }
 
@@ -96,17 +101,17 @@ namespace FormsModule
         private void OutputResults(TrustworthyApplicationLevel level)
         {
             if (level == TrustworthyApplicationLevel.Trustworthy)
-                ColourTextBoxAndWriteText("Trustworthy");
+                ColourTextBoxAndWriteText("Trustworthy", Color.Green);
             else if (level == TrustworthyApplicationLevel.NotTrustworthy)
-                ColourTextBoxAndWriteText("Not Trustworthy");
+                ColourTextBoxAndWriteText("Not Trustworthy", Color.Red);
             else
-                ColourTextBoxAndWriteText("Inconclusive result");
+                ColourTextBoxAndWriteText("Inconclusive result", Color.Yellow);
         }
 
-        // TO DO
-        private void ColourTextBoxAndWriteText(string text)
+        private void ColourTextBoxAndWriteText(string text, Color color)
         {
             label5.Text = text;
+            label5.BackColor = color;
             label5.Visible = true;
         }
 

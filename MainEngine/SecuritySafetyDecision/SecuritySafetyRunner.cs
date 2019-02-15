@@ -24,7 +24,7 @@ namespace SecuritySafetyModule
 
         static void CallWinCheckSec(string fileLocation)
         {
-            string fileToAnalyse = fileLocation != null ? fileLocation : TestFileLocation;
+            string fileToAnalyse = fileLocation != null ? "\'" + fileLocation + "\'" : TestFileLocation;
             ProcessStartInfo startInfo = new ProcessStartInfo()
             {
                 FileName = ScriptLocation,

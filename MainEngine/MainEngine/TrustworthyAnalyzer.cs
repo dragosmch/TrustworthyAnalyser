@@ -36,12 +36,12 @@ namespace MainEngine
         public static TrustworthyApplicationLevel ReturnResults(string givenFile)
         {
             string fileToAnalyse = givenFile ?? TestFileLocation;
-            GetAvailabilityDecision(fileToAnalyse);
+            //GetAvailabilityDecision(fileToAnalyse);
             GetSecuritySafetyDecision(fileToAnalyse);
             int totalResult = TrustworthinessResult.Availability + TrustworthinessResult.Safety + TrustworthinessResult.Security;
             if (totalResult >= 2)
                 return TrustworthyApplicationLevel.Trustworthy;
-            else if (totalResult == 0)
+            else if (totalResult <= 0)
                 return TrustworthyApplicationLevel.NotTrustworthy;
             else
                 return TrustworthyApplicationLevel.Inconclusive;
