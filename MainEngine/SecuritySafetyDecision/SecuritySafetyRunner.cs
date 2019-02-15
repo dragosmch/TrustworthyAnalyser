@@ -24,7 +24,7 @@ namespace SecuritySafetyModule
 
         static void CallWinCheckSec(string fileLocation)
         {
-            string fileToAnalyse = fileLocation != null ? "\'" + fileLocation + "\'" : TestFileLocation;
+            string fileToAnalyse = fileLocation != null ? "\"" + fileLocation + "\"" : TestFileLocation;
             ProcessStartInfo startInfo = new ProcessStartInfo()
             {
                 FileName = ScriptLocation,
@@ -42,6 +42,7 @@ namespace SecuritySafetyModule
                 using (Process exeProcess = Process.Start(startInfo))
                 {
                     exeProcess.OutputDataReceived += OnOutputDataReceived;
+                    exeProcess.ErrorDataReceived += ErrorDataReceived;
                     exeProcess.BeginOutputReadLine();
                     exeProcess.WaitForExit();
                 }
@@ -53,7 +54,12 @@ namespace SecuritySafetyModule
             }
         }
 
-        static void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
+        private static void ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            Console.WriteLine(e);
+        }
+
+        private static void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             outputResults += e.Data;
         }
