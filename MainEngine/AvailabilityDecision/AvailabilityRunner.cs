@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Management;
 using System;
 
@@ -8,7 +7,7 @@ namespace AvailabilityModule
     public class AvailabilityRunner
     {
 
-        // Returns number of runs that were successfull(no errors occured)
+        // Returns number of runs that were successful(no errors occured)
         public static int RunExecutableMultipleTimes(string fileLocation, int noOfRuns, int timeout)
         {
             int resultOfRuns = 0;
@@ -65,7 +64,7 @@ namespace AvailabilityModule
             {
                 foreach (ManagementObject mo in processCollection)
                 {
-                    // kill child processes(also kills childrens of childrens etc.)
+                    // kill child processes(also kills children of children etc.)
                     KillProcessAndChildrens(Convert.ToInt32(mo["ProcessID"]));
                 }
             }

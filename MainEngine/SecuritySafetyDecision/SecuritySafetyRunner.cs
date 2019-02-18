@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading;
 
 namespace SecuritySafetyModule
 {
@@ -17,7 +16,9 @@ namespace SecuritySafetyModule
             if (outputResults != "")
             {
                 var resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject<WinCheckSecResultObject>(outputResults);
+                outputResults = "";
                 return resultObject;
+
             }
             return null;
         }
@@ -61,7 +62,7 @@ namespace SecuritySafetyModule
 
         private static void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            outputResults += e.Data;
+            if (outputResults == "") outputResults += e.Data;
         }
     }
 }

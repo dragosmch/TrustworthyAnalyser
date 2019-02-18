@@ -3,17 +3,16 @@
     public static class SecuritySafetyDecision
     {
 
-        public static int GetSecuritySafetyResult(string fileLocation)
+        public static int GetSecuritySafetyResultFromPercentage(int percentage)
         {
-            int securitySafetyPercentage = GetSecuritySafetyPercentage(fileLocation);
-            if (securitySafetyPercentage >= 80)
+            if (percentage >= 80)
                 return 1;
-            else if (securitySafetyPercentage <= 40)
+            if (percentage <= 40)
                 return -1;
             return 0;
         }
 
-        private static int GetSecuritySafetyPercentage(string fileLocation)
+        public static int GetSecuritySafetyPercentage(string fileLocation)
         {
             var resultObject = SecuritySafetyRunner.GetWinCheckSecResultObject(fileLocation);
             int percentage = 0;

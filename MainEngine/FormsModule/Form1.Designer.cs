@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.instructionsLabel = new System.Windows.Forms.Label();
+            this.welcomeLabel = new System.Windows.Forms.Label();
+            this.resultLabel = new System.Windows.Forms.Label();
+            this.analyseButton = new System.Windows.Forms.Button();
+            this.resultTitleLabel = new System.Windows.Forms.Label();
+            this.fileLocationLabel = new System.Windows.Forms.Label();
             this.fileLocationBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.openButton = new System.Windows.Forms.Button();
+            this.availabilityResultLabel = new System.Windows.Forms.Label();
+            this.securitySafetyResultLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -51,98 +53,120 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.instructionsLabel);
+            this.splitContainer1.Panel1.Controls.Add(this.welcomeLabel);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.CausesValidation = false;
-            this.splitContainer1.Panel2.Controls.Add(this.label5);
-            this.splitContainer1.Panel2.Controls.Add(this.button2);
-            this.splitContainer1.Panel2.Controls.Add(this.label4);
-            this.splitContainer1.Panel2.Controls.Add(this.label3);
+            this.splitContainer1.Panel2.Controls.Add(this.securitySafetyResultLabel);
+            this.splitContainer1.Panel2.Controls.Add(this.availabilityResultLabel);
+            this.splitContainer1.Panel2.Controls.Add(this.resultLabel);
+            this.splitContainer1.Panel2.Controls.Add(this.analyseButton);
+            this.splitContainer1.Panel2.Controls.Add(this.resultTitleLabel);
+            this.splitContainer1.Panel2.Controls.Add(this.fileLocationLabel);
             this.splitContainer1.Panel2.Controls.Add(this.fileLocationBox);
-            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.openButton);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 0;
             // 
-            // label2
+            // instructionsLabel
             // 
-            this.label2.Location = new System.Drawing.Point(12, 184);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(156, 56);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Open an executable file to analyse its trustworthiness.";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.instructionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.instructionsLabel.Location = new System.Drawing.Point(12, 184);
+            this.instructionsLabel.Name = "instructionsLabel";
+            this.instructionsLabel.Size = new System.Drawing.Size(197, 75);
+            this.instructionsLabel.TabIndex = 3;
+            this.instructionsLabel.Text = "Open an executable file to analyse its trustworthiness.";
             // 
-            // label1
+            // welcomeLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Welcome to Trustworthy Analyser!";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeLabel.Location = new System.Drawing.Point(9, 27);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(242, 16);
+            this.welcomeLabel.TabIndex = 2;
+            this.welcomeLabel.Text = "Welcome to Trustworthy Analyser!";
             // 
-            // label5
+            // resultLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 226);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Visible = false;
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.resultLabel.AutoSize = true;
+            this.resultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultLabel.Location = new System.Drawing.Point(32, 369);
+            this.resultLabel.Name = "resultLabel";
+            this.resultLabel.Size = new System.Drawing.Size(0, 17);
+            this.resultLabel.TabIndex = 5;
+            this.resultLabel.Visible = false;
             // 
-            // button2
+            // analyseButton
             // 
-            this.button2.Location = new System.Drawing.Point(35, 88);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Analyse";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.analyseButton.Location = new System.Drawing.Point(35, 88);
+            this.analyseButton.Name = "analyseButton";
+            this.analyseButton.Size = new System.Drawing.Size(75, 23);
+            this.analyseButton.TabIndex = 4;
+            this.analyseButton.Text = "Analyse";
+            this.analyseButton.UseVisualStyleBackColor = true;
+            this.analyseButton.Click += new System.EventHandler(this.analyseButton_Click);
             // 
-            // label4
+            // resultTitleLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 197);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Result";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.resultTitleLabel.AutoSize = true;
+            this.resultTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultTitleLabel.Location = new System.Drawing.Point(32, 197);
+            this.resultTitleLabel.Name = "resultTitleLabel";
+            this.resultTitleLabel.Size = new System.Drawing.Size(59, 17);
+            this.resultTitleLabel.TabIndex = 3;
+            this.resultTitleLabel.Text = "Results:";
             // 
-            // label3
+            // fileLocationLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "File Location";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.fileLocationLabel.AutoSize = true;
+            this.fileLocationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fileLocationLabel.Location = new System.Drawing.Point(15, 27);
+            this.fileLocationLabel.Name = "fileLocationLabel";
+            this.fileLocationLabel.Size = new System.Drawing.Size(88, 17);
+            this.fileLocationLabel.TabIndex = 2;
+            this.fileLocationLabel.Text = "File Location";
             // 
             // fileLocationBox
             // 
-            this.fileLocationBox.Location = new System.Drawing.Point(18, 43);
+            this.fileLocationBox.Location = new System.Drawing.Point(18, 47);
             this.fileLocationBox.Name = "fileLocationBox";
             this.fileLocationBox.Size = new System.Drawing.Size(428, 20);
             this.fileLocationBox.TabIndex = 1;
             // 
-            // button1
+            // openButton
             // 
-            this.button1.Location = new System.Drawing.Point(452, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Open";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.openButton.Location = new System.Drawing.Point(452, 47);
+            this.openButton.Name = "openButton";
+            this.openButton.Size = new System.Drawing.Size(75, 23);
+            this.openButton.TabIndex = 0;
+            this.openButton.Text = "Open";
+            this.openButton.UseVisualStyleBackColor = true;
+            this.openButton.Click += new System.EventHandler(this.openButton_Click);
+            // 
+            // availabilityResultLabel
+            // 
+            this.availabilityResultLabel.AutoSize = true;
+            this.availabilityResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.availabilityResultLabel.Location = new System.Drawing.Point(35, 245);
+            this.availabilityResultLabel.Name = "availabilityResultLabel";
+            this.availabilityResultLabel.Size = new System.Drawing.Size(0, 17);
+            this.availabilityResultLabel.TabIndex = 6;
+            this.availabilityResultLabel.Visible = false;
+            // 
+            // securitySafetyResultLabel
+            // 
+            this.securitySafetyResultLabel.AutoSize = true;
+            this.securitySafetyResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.securitySafetyResultLabel.Location = new System.Drawing.Point(35, 298);
+            this.securitySafetyResultLabel.Name = "securitySafetyResultLabel";
+            this.securitySafetyResultLabel.Size = new System.Drawing.Size(0, 17);
+            this.securitySafetyResultLabel.TabIndex = 7;
+            this.securitySafetyResultLabel.Visible = false;
             // 
             // Form1
             // 
@@ -167,14 +191,16 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label welcomeLabel;
+        private System.Windows.Forms.Label instructionsLabel;
+        private System.Windows.Forms.Button openButton;
+        private System.Windows.Forms.Label fileLocationLabel;
         private System.Windows.Forms.TextBox fileLocationBox;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label resultTitleLabel;
+        private System.Windows.Forms.Button analyseButton;
+        private System.Windows.Forms.Label resultLabel;
+        private System.Windows.Forms.Label availabilityResultLabel;
+        private System.Windows.Forms.Label securitySafetyResultLabel;
     }
 }
 

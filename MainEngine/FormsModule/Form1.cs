@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace FormsModule
 {
-    public partial class Form1 : Form
+    public sealed partial class Form1 : Form
     {
         public Form1()
         {
@@ -15,52 +15,7 @@ namespace FormsModule
             DragDrop += new DragEventHandler(Form1_DragDrop);
         }
 
-        void Form1_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Link;
-        }
-
-        void Form1_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (files.Length == 1)
-            {
-                fileLocationBox.Text = files[0];
-            }
-            foreach (string file in files) Console.WriteLine(file);
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void openButton_Click(object sender, EventArgs e)
         {
             // Wrap the creation of the OpenFileDialog instance in a using statement,
             // rather than manually calling the Dispose method to ensure proper disposal
@@ -77,28 +32,25 @@ namespace FormsModule
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void analyseButton_Click(object sender, EventArgs e)
         {
             string fileLocation = fileLocationBox.Text;
-            if (fileLocation != null && fileLocation != "")
+            if (!string.IsNullOrEmpty(fileLocation))
             {
-                button2.Enabled = false;
+                analyseButton.Enabled = false;
                 OutputResults(TrustworthyAnalyzer.ReturnResults(fileLocation));
             }
-            button2.Enabled = true;
+            analyseButton.Enabled = true;
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void OutputResults(TrustworthinessResult trustworthyResult)
         {
-
+            OutputMainResult(trustworthyResult.TrustworthinessLevel);
+            OutputAvailabilityResult(trustworthyResult);
+            OutputSecuritySafetyyResult(trustworthyResult);
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OutputResults(TrustworthyApplicationLevel level)
+        private void OutputMainResult(TrustworthyApplicationLevel level)
         {
             if (level == TrustworthyApplicationLevel.Trustworthy)
                 ColourTextBoxAndWriteText("Trustworthy", Color.Green);
@@ -108,14 +60,48 @@ namespace FormsModule
                 ColourTextBoxAndWriteText("Inconclusive result", Color.Yellow);
         }
 
-        private void ColourTextBoxAndWriteText(string text, Color color)
+        private void OutputAvailabilityResult(TrustworthinessResult result)
         {
-            label5.Text = text;
-            label5.BackColor = color;
-            label5.Visible = true;
+            availabilityResultLabel.Visible = true;
+            availabilityResultLabel.Text = 
+                $"Sucessful runs: {result.AvailabilityNoOfSuccessfulRuns}/{result.AvailabilityNoOfRuns}";
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void OutputSecuritySafetyyResult(TrustworthinessResult result)
+        {
+            securitySafetyResultLabel.Visible = true;
+            securitySafetyResultLabel.Text = 
+                $"Security and Safety protection score: {result.SafetyAndSecurityPercentage}/{result.SafetyAndSecurityPercentageBase}";
+        }
+
+        private void ColourTextBoxAndWriteText(string text, Color color)
+        {
+            resultLabel.Text = text;
+            resultLabel.BackColor = color;
+            resultLabel.Visible = true;
+        }
+
+        private void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Link;
+        }
+
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length == 1)
+            {
+                fileLocationBox.Text = files[0];
+            }
+            foreach (string file in files) Console.WriteLine(file);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
