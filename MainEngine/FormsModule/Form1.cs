@@ -34,11 +34,12 @@ namespace FormsModule
 
         private void analyseButton_Click(object sender, EventArgs e)
         {
+            HideResults();
             string fileLocation = fileLocationBox.Text;
             if (!string.IsNullOrEmpty(fileLocation))
             {
                 analyseButton.Enabled = false;
-                OutputResults(TrustworthyAnalyzer.ReturnResults(fileLocation));
+                OutputResults(TrustworthyAnalyzer.ReturnResults(fileLocation, GetModeFromModeButtons()));
             }
             analyseButton.Enabled = true;
         }
@@ -64,7 +65,7 @@ namespace FormsModule
         {
             availabilityResultLabel.Visible = true;
             availabilityResultLabel.Text = 
-                $"Sucessful runs: {result.AvailabilityNoOfSuccessfulRuns}/{result.AvailabilityNoOfRuns}";
+                $"Successful availability runs: {result.AvailabilityNoOfSuccessfulRuns}/{result.AvailabilityNoOfRuns}";
         }
 
         private void OutputSecuritySafetyyResult(TrustworthinessResult result)
@@ -79,6 +80,22 @@ namespace FormsModule
             resultLabel.Text = text;
             resultLabel.BackColor = color;
             resultLabel.Visible = true;
+        }
+
+        private int GetModeFromModeButtons()
+        {
+            if (mediumModeButton.Checked)
+                return 1;
+            if (advancedModeButton.Checked)
+                return 2;
+            return 0;
+        }
+
+        private void HideResults()
+        {
+            availabilityResultLabel.Visible = false;
+            securitySafetyResultLabel.Visible = false;
+            resultLabel.Visible = false;
         }
 
         private void Form1_DragEnter(object sender, DragEventArgs e)

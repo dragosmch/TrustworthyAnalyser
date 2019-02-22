@@ -1,0 +1,6 @@
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatReadsNumberFromFileAndFails\bin\Debug\AppThatReadsNumberFromFileAndFails.exe.config
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatReadsNumberFromFileAndFails\bin\Debug\AppThatReadsNumberFromFileAndFails.exe
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatReadsNumberFromFileAndFails\bin\Debug\AppThatReadsNumberFromFileAndFails.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatReadsNumberFromFileAndFails\obj\Debug\AppThatReadsNumberFromFileAndFails.csproj.CoreCompileInputs.cache
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatReadsNumberFromFileAndFails\obj\Debug\AppThatReadsNumberFromFileAndFails.exe
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatReadsNumberFromFileAndFails\obj\Debug\AppThatReadsNumberFromFileAndFails.pdb

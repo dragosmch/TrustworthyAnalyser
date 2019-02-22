@@ -4,7 +4,7 @@
     {
         public int Safety;
         public int SafetyAndSecurityPercentage;
-        public int SafetyAndSecurityPercentageBase = 99;
+        public int SafetyAndSecurityPercentageBase;
         public int Security;
         public int Availability;
         public int AvailabilityNoOfRuns;
@@ -17,10 +17,12 @@
         {
             Safety = 0;
             SafetyAndSecurityPercentage = 0;
+            SafetyAndSecurityPercentageBase = 0;
             Security = 0;
             Availability = 0;
             AvailabilityNoOfRuns = 0;
             AvailabilityNoOfSuccessfulRuns = 0;
+            TrustworthinessLevel = TrustworthyApplicationLevel.NotSet;
         }
     }
 
@@ -28,6 +30,14 @@
     {
         Trustworthy,
         NotTrustworthy,
-        Inconclusive
+        Inconclusive,
+        NotSet
+    }
+
+    public enum TrustworthyAccuracy
+    {
+        Basic,
+        Medium,
+        Advanced
     }
 }

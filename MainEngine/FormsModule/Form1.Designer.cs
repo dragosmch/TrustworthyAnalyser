@@ -29,20 +29,25 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.modeOptionBox = new System.Windows.Forms.GroupBox();
+            this.advancedModeButton = new System.Windows.Forms.RadioButton();
+            this.mediumModeButton = new System.Windows.Forms.RadioButton();
+            this.basicModeButton = new System.Windows.Forms.RadioButton();
             this.instructionsLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
+            this.securitySafetyResultLabel = new System.Windows.Forms.Label();
+            this.availabilityResultLabel = new System.Windows.Forms.Label();
             this.resultLabel = new System.Windows.Forms.Label();
             this.analyseButton = new System.Windows.Forms.Button();
             this.resultTitleLabel = new System.Windows.Forms.Label();
             this.fileLocationLabel = new System.Windows.Forms.Label();
             this.fileLocationBox = new System.Windows.Forms.TextBox();
             this.openButton = new System.Windows.Forms.Button();
-            this.availabilityResultLabel = new System.Windows.Forms.Label();
-            this.securitySafetyResultLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.modeOptionBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -53,6 +58,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.modeOptionBox);
             this.splitContainer1.Panel1.Controls.Add(this.instructionsLabel);
             this.splitContainer1.Panel1.Controls.Add(this.welcomeLabel);
             // 
@@ -72,6 +78,50 @@
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 0;
             // 
+            // modeOptionBox
+            // 
+            this.modeOptionBox.Controls.Add(this.advancedModeButton);
+            this.modeOptionBox.Controls.Add(this.mediumModeButton);
+            this.modeOptionBox.Controls.Add(this.basicModeButton);
+            this.modeOptionBox.Location = new System.Drawing.Point(24, 71);
+            this.modeOptionBox.Name = "modeOptionBox";
+            this.modeOptionBox.Size = new System.Drawing.Size(200, 100);
+            this.modeOptionBox.TabIndex = 4;
+            this.modeOptionBox.TabStop = false;
+            // 
+            // advancedModeButton
+            // 
+            this.advancedModeButton.AutoSize = true;
+            this.advancedModeButton.Location = new System.Drawing.Point(7, 65);
+            this.advancedModeButton.Name = "advancedModeButton";
+            this.advancedModeButton.Size = new System.Drawing.Size(74, 17);
+            this.advancedModeButton.TabIndex = 2;
+            this.advancedModeButton.TabStop = true;
+            this.advancedModeButton.Text = "Advanced";
+            this.advancedModeButton.UseVisualStyleBackColor = true;
+            // 
+            // mediumModeButton
+            // 
+            this.mediumModeButton.AutoSize = true;
+            this.mediumModeButton.Location = new System.Drawing.Point(7, 41);
+            this.mediumModeButton.Name = "mediumModeButton";
+            this.mediumModeButton.Size = new System.Drawing.Size(62, 17);
+            this.mediumModeButton.TabIndex = 1;
+            this.mediumModeButton.TabStop = true;
+            this.mediumModeButton.Text = "Medium";
+            this.mediumModeButton.UseVisualStyleBackColor = true;
+            // 
+            // basicModeButton
+            // 
+            this.basicModeButton.AutoSize = true;
+            this.basicModeButton.Location = new System.Drawing.Point(7, 17);
+            this.basicModeButton.Name = "basicModeButton";
+            this.basicModeButton.Size = new System.Drawing.Size(51, 17);
+            this.basicModeButton.TabIndex = 0;
+            this.basicModeButton.TabStop = true;
+            this.basicModeButton.Text = "Basic";
+            this.basicModeButton.UseVisualStyleBackColor = true;
+            // 
             // instructionsLabel
             // 
             this.instructionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -90,6 +140,26 @@
             this.welcomeLabel.Size = new System.Drawing.Size(242, 16);
             this.welcomeLabel.TabIndex = 2;
             this.welcomeLabel.Text = "Welcome to Trustworthy Analyser!";
+            // 
+            // securitySafetyResultLabel
+            // 
+            this.securitySafetyResultLabel.AutoSize = true;
+            this.securitySafetyResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.securitySafetyResultLabel.Location = new System.Drawing.Point(35, 298);
+            this.securitySafetyResultLabel.Name = "securitySafetyResultLabel";
+            this.securitySafetyResultLabel.Size = new System.Drawing.Size(0, 17);
+            this.securitySafetyResultLabel.TabIndex = 7;
+            this.securitySafetyResultLabel.Visible = false;
+            // 
+            // availabilityResultLabel
+            // 
+            this.availabilityResultLabel.AutoSize = true;
+            this.availabilityResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.availabilityResultLabel.Location = new System.Drawing.Point(35, 245);
+            this.availabilityResultLabel.Name = "availabilityResultLabel";
+            this.availabilityResultLabel.Size = new System.Drawing.Size(0, 17);
+            this.availabilityResultLabel.TabIndex = 6;
+            this.availabilityResultLabel.Visible = false;
             // 
             // resultLabel
             // 
@@ -148,26 +218,6 @@
             this.openButton.UseVisualStyleBackColor = true;
             this.openButton.Click += new System.EventHandler(this.openButton_Click);
             // 
-            // availabilityResultLabel
-            // 
-            this.availabilityResultLabel.AutoSize = true;
-            this.availabilityResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.availabilityResultLabel.Location = new System.Drawing.Point(35, 245);
-            this.availabilityResultLabel.Name = "availabilityResultLabel";
-            this.availabilityResultLabel.Size = new System.Drawing.Size(0, 17);
-            this.availabilityResultLabel.TabIndex = 6;
-            this.availabilityResultLabel.Visible = false;
-            // 
-            // securitySafetyResultLabel
-            // 
-            this.securitySafetyResultLabel.AutoSize = true;
-            this.securitySafetyResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.securitySafetyResultLabel.Location = new System.Drawing.Point(35, 298);
-            this.securitySafetyResultLabel.Name = "securitySafetyResultLabel";
-            this.securitySafetyResultLabel.Size = new System.Drawing.Size(0, 17);
-            this.securitySafetyResultLabel.TabIndex = 7;
-            this.securitySafetyResultLabel.Visible = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,6 +234,8 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.modeOptionBox.ResumeLayout(false);
+            this.modeOptionBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -201,6 +253,10 @@
         private System.Windows.Forms.Label resultLabel;
         private System.Windows.Forms.Label availabilityResultLabel;
         private System.Windows.Forms.Label securitySafetyResultLabel;
+        private System.Windows.Forms.GroupBox modeOptionBox;
+        private System.Windows.Forms.RadioButton mediumModeButton;
+        private System.Windows.Forms.RadioButton basicModeButton;
+        private System.Windows.Forms.RadioButton advancedModeButton;
     }
 }
 

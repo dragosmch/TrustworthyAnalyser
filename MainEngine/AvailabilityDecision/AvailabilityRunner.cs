@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Management;
 using System;
+using System.Threading;
 
 namespace AvailabilityModule
 {
@@ -36,6 +37,7 @@ namespace AvailabilityModule
             {
                 using (Process exeProcess = Process.Start(startInfo))
                 {
+                    Thread.Sleep(1000);
                     // Kill the process if is running more than a threshold
                     if (!exeProcess.WaitForExit(timeout))
                     {

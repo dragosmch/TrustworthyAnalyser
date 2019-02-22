@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppThatFailsEveryThreeOutOf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppNotCompiledWithSecurityAttributes", "AppNotCompiledWithSecurityAttributes\AppNotCompiledWithSecurityAttributes.csproj", "{1D8163B1-59B0-41F6-9E47-7BA3996706DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppThatReadsNumberFromFileAndFails", "AppThatReadsNumberFromFileAndFails\AppThatReadsNumberFromFileAndFails.csproj", "{382B8B37-DDB1-4E29-A6CA-B0E8272363AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1D8163B1-59B0-41F6-9E47-7BA3996706DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D8163B1-59B0-41F6-9E47-7BA3996706DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D8163B1-59B0-41F6-9E47-7BA3996706DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{382B8B37-DDB1-4E29-A6CA-B0E8272363AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{382B8B37-DDB1-4E29-A6CA-B0E8272363AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{382B8B37-DDB1-4E29-A6CA-B0E8272363AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{382B8B37-DDB1-4E29-A6CA-B0E8272363AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

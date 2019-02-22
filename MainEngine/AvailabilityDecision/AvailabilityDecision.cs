@@ -3,11 +3,24 @@
     public class AvailabilityDecision
     {
         private static readonly int TimeoutInMilliseconds = 1500;
-        private static readonly int NoOfTimesToRun = 10;
+        private static int NoOfTimesToRun;
 
 
-        public static int GetAvailabilityNoOfSuccessfulRunsResult(string fileLocation)
+        public static int GetAvailabilityNoOfSuccessfulRunsResult(string fileLocation, int mode)
         {
+            switch (mode)
+            {
+                case 1:
+                    NoOfTimesToRun = 5;
+                    break;
+                case 2:
+                    NoOfTimesToRun = 10;
+                    break;
+                default:
+                    NoOfTimesToRun = 3;
+                    break;
+            }
+
             return AvailabilityRunner.RunExecutableMultipleTimes(fileLocation, NoOfTimesToRun, TimeoutInMilliseconds);
         }
 
