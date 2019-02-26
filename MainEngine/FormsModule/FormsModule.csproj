@@ -80,9 +80,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AvailabilityDecision\AvailabilityModule.csproj">
+      <Project>{284610F8-7924-4DBD-95FC-4C9DE5353916}</Project>
+      <Name>AvailabilityModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MainEngine\MainEngine.csproj">
       <Project>{84b55137-014b-448c-97de-fc3c7d7b90e5}</Project>
       <Name>MainEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SecuritySafetyDecision\SecuritySafetyModule.csproj">
+      <Project>{799EAED5-0479-4760-8421-DBB73D17CD27}</Project>
+      <Name>SecuritySafetyModule</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AvailabilityDecision.cs" />
+    <Compile Include="AvailabilityResult.cs" />
     <Compile Include="AvailabilityRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -70,17 +70,9 @@ namespace AvailabilityModule
                     KillProcessAndChildrens(Convert.ToInt32(mo["ProcessID"]));
                 }
             }
+            Process proc = Process.GetProcessById(pid);
+            if (!proc.HasExited) proc.Kill();
 
-            // Then kill parents.
-            try
-            {
-                Process proc = Process.GetProcessById(pid);
-                if (!proc.HasExited) proc.Kill();
-            }
-            catch (ArgumentException)
-            {
-                // Process already exited.
-            }
         }
     }
 }

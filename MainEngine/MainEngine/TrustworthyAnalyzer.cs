@@ -7,7 +7,6 @@ namespace MainEngine
 {
     public static class TrustworthyAnalyzer
     {
-        //private static string TestFileLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\PhotoScapeSetup.exe";
         private static readonly string TestFileLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFailsEveryOtherTime.exe";
         private static TrustworthinessResult TrustworthinessResult = new TrustworthinessResult();
    
@@ -39,7 +38,10 @@ namespace MainEngine
             string fileToAnalyse = givenFile ?? TestFileLocation;
             GetAvailabilityDecision(fileToAnalyse, mode);
             GetSecuritySafetyDecision(fileToAnalyse, mode);
-            int totalResult = TrustworthinessResult.Availability + TrustworthinessResult.Safety + TrustworthinessResult.Security;
+            int totalResult = 
+                TrustworthinessResult.AvailabilityResult.Availability 
+                    + TrustworthinessResult.SecuritySafetyResult.Safety 
+                    + TrustworthinessResult.SecuritySafetyResult.Security;
             if (totalResult >= 2)
                 TrustworthinessResult.TrustworthinessLevel = TrustworthyApplicationLevel.Trustworthy;
             else if (totalResult <= 0)
@@ -51,18 +53,11 @@ namespace MainEngine
 
         private static void GetAvailabilityDecision(string fileToAnalyse, int mode)
         {
-            int noOfSuccessfulRuns = AvailabilityDecision.GetAvailabilityNoOfSuccessfulRunsResult(fileToAnalyse, mode);
-            TrustworthinessResult.Availability = AvailabilityDecision.GetAvailabilityResultFromRuns(noOfSuccessfulRuns);
-            TrustworthinessResult.AvailabilityNoOfRuns = AvailabilityDecision.getAvailabilityNoOfRuns();
-            TrustworthinessResult.AvailabilityNoOfSuccessfulRuns = noOfSuccessfulRuns;
+            TrustworthinessResult.AvailabilityResult = AvailabilityDecision.GetAvailabilityDecision(fileToAnalyse, mode);
         }
         private static void GetSecuritySafetyDecision(string fileToAnalyse, int mode)
         {
-            int percentageResult = SecuritySafetyDecision.GetSecuritySafetyPercentage(fileToAnalyse, mode);
-            TrustworthinessResult.SafetyAndSecurityPercentage = percentageResult;
-            TrustworthinessResult.SafetyAndSecurityPercentageBase = SecuritySafetyDecision.GetSecuritySafetyMaxPercentage(mode);
-            TrustworthinessResult.Security = SecuritySafetyDecision.GetSecuritySafetyResultFromPercentage(percentageResult, mode);
-            TrustworthinessResult.Safety = SecuritySafetyDecision.GetSecuritySafetyResultFromPercentage(percentageResult, mode);
+            TrustworthinessResult.SecuritySafetyResult = SecuritySafetyDecision.GetSecuritySafetyDecision(fileToAnalyse, mode);
         }
 
         private static void ConsoleWriteLineWithColour(string text, ConsoleColor colour)

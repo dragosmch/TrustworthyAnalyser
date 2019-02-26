@@ -1,27 +1,25 @@
-﻿namespace MainEngine
+﻿using AvailabilityModule;
+using SecuritySafetyModule;
+using System;
+
+namespace MainEngine
 {
     public class TrustworthinessResult
     {
-        public int Safety;
-        public int SafetyAndSecurityPercentage;
-        public int SafetyAndSecurityPercentageBase;
-        public int Security;
-        public int Availability;
-        public int AvailabilityNoOfRuns;
-        public int AvailabilityNoOfSuccessfulRuns;
         public TrustworthyApplicationLevel TrustworthinessLevel;
+        public SecuritySafetyResult SecuritySafetyResult;
+        public AvailabilityResult AvailabilityResult;
         //public int Resilience;
         //public int Reliability;
 
+        public string ToString(int mode)
+        {
+            return $"{AvailabilityResult}{SecuritySafetyResult.ToLongString(mode)}{Environment.NewLine}Final result: {TrustworthinessLevel}";
+        }
+
+        // this should be deleted, it is nasty
         public void clear()
         {
-            Safety = 0;
-            SafetyAndSecurityPercentage = 0;
-            SafetyAndSecurityPercentageBase = 0;
-            Security = 0;
-            Availability = 0;
-            AvailabilityNoOfRuns = 0;
-            AvailabilityNoOfSuccessfulRuns = 0;
             TrustworthinessLevel = TrustworthyApplicationLevel.NotSet;
         }
     }

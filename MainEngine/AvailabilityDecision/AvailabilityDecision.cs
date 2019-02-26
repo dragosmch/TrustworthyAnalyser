@@ -5,8 +5,18 @@
         private static readonly int TimeoutInMilliseconds = 1500;
         private static int NoOfTimesToRun;
 
+        public static AvailabilityResult GetAvailabilityDecision(string fileLocation, int mode)
+        {
+            int noOfSuccessfulRuns = GetAvailabilityNoOfSuccessfulRunsResult(fileLocation, mode);
+            return new AvailabilityResult
+            {
+                Availability = GetAvailabilityResultFromRuns(noOfSuccessfulRuns),
+                AvailabilityNoOfRuns = getAvailabilityNoOfRuns(),
+                AvailabilityNoOfSuccessfulRuns = noOfSuccessfulRuns
+            };
+        }
 
-        public static int GetAvailabilityNoOfSuccessfulRunsResult(string fileLocation, int mode)
+        private static int GetAvailabilityNoOfSuccessfulRunsResult(string fileLocation, int mode)
         {
             switch (mode)
             {
@@ -24,16 +34,16 @@
             return AvailabilityRunner.RunExecutableMultipleTimes(fileLocation, NoOfTimesToRun, TimeoutInMilliseconds);
         }
 
-        public static int getAvailabilityNoOfRuns()
+        private static int getAvailabilityNoOfRuns()
         {
             return NoOfTimesToRun;
         }
 
-        public static int GetAvailabilityResultFromRuns(int noOfSucessfulRuns)
+        private static int GetAvailabilityResultFromRuns(int noOfSuccessfulRuns)
         {
-            if (noOfSucessfulRuns < NoOfTimesToRun / 2 + 1)
+            if (noOfSuccessfulRuns < NoOfTimesToRun / 2 + 1)
                 return -1;
-            if (noOfSucessfulRuns < NoOfTimesToRun)
+            if (noOfSuccessfulRuns < NoOfTimesToRun)
                 return 0;
             return 1;
         }

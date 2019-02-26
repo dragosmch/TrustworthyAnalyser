@@ -1,9 +1,26 @@
-﻿namespace SecuritySafetyModule
+﻿
+namespace SecuritySafetyModule
 {
     public static class SecuritySafetyDecision
     {
+        public static SecuritySafetyResult GetSecuritySafetyDecision(string fileLocation, int mode)
+        {
+            var resultObject = SecuritySafetyRunner.GetWinCheckSecResultObject(fileLocation);
+            int percentageResult = GetSecuritySafetyPercentage(resultObject, mode);
+            // -1, 0 or 1
+            int ternaryResult = GetSecuritySafetyResultFromPercentage(percentageResult, mode);
+            return new SecuritySafetyResult
+            {
+                Safety = ternaryResult,
+                SafetyAndSecurityPercentage = percentageResult,
+                SafetyAndSecurityPercentageBase = GetSecuritySafetyMaxPercentage(mode),
+                Security = ternaryResult,
+                winCheckSecResultObject = resultObject
 
-        public static int GetSecuritySafetyResultFromPercentage(int percentage, int mode)
+            };
+        }
+
+        private static int GetSecuritySafetyResultFromPercentage(int percentage, int mode)
         {
             switch (mode)
             {
@@ -22,7 +39,7 @@
             }
         }
 
-        public static int GetSecuritySafetyMaxPercentage(int mode)
+        private static int GetSecuritySafetyMaxPercentage(int mode)
         {
             switch (mode)
             {
@@ -36,10 +53,8 @@
         }
         
 
-        public static int GetSecuritySafetyPercentage(string fileLocation, int mode)
+        private static int GetSecuritySafetyPercentage(WinCheckSecResultObject resultObject, int mode)
         {
-
-            var resultObject = SecuritySafetyRunner.GetWinCheckSecResultObject(fileLocation);
             int percentage = 0;
             if (resultObject.Aslr) percentage += 20;
             if (resultObject.DynamicBase) percentage += 20;

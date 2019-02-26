@@ -1,12 +1,15 @@
 ﻿using MainEngine;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FormsModule
 {
     public sealed partial class Form1 : Form
     {
+        private static TrustworthinessResult trustworthyResult;
+
         public Form1()
         {
             InitializeComponent();
@@ -32,23 +35,26 @@ namespace FormsModule
             }
         }
 
-        private void analyseButton_Click(object sender, EventArgs e)
+        private void AnalyseButton_Click(object sender, EventArgs e)
         {
             HideResults();
             string fileLocation = fileLocationBox.Text;
             if (!string.IsNullOrEmpty(fileLocation))
             {
                 analyseButton.Enabled = false;
-                OutputResults(TrustworthyAnalyzer.ReturnResults(fileLocation, GetModeFromModeButtons()));
+                int mode = GetModeFromModeButtons();
+                trustworthyResult = TrustworthyAnalyzer.ReturnResults(fileLocation, mode);
+                OutputResults(trustworthyResult, mode);
             }
             analyseButton.Enabled = true;
+            saveReportButton.Visible = true;
         }
 
-        private void OutputResults(TrustworthinessResult trustworthyResult)
+        private void OutputResults(TrustworthinessResult trustworthyResult, int mode)
         {
             OutputMainResult(trustworthyResult.TrustworthinessLevel);
             OutputAvailabilityResult(trustworthyResult);
-            OutputSecuritySafetyyResult(trustworthyResult);
+            OutputSecuritySafetyyResult(trustworthyResult, mode);
         }
 
         private void OutputMainResult(TrustworthyApplicationLevel level)
@@ -64,15 +70,13 @@ namespace FormsModule
         private void OutputAvailabilityResult(TrustworthinessResult result)
         {
             availabilityResultLabel.Visible = true;
-            availabilityResultLabel.Text = 
-                $"Successful availability runs: {result.AvailabilityNoOfSuccessfulRuns}/{result.AvailabilityNoOfRuns}";
+            availabilityResultLabel.Text = result.AvailabilityResult.ToString();
         }
 
-        private void OutputSecuritySafetyyResult(TrustworthinessResult result)
+        private void OutputSecuritySafetyyResult(TrustworthinessResult result, int mode)
         {
             securitySafetyResultLabel.Visible = true;
-            securitySafetyResultLabel.Text = 
-                $"Security and Safety protection score: {result.SafetyAndSecurityPercentage}/{result.SafetyAndSecurityPercentageBase}";
+            securitySafetyResultLabel.Text = result.SecuritySafetyResult.ToString();
         }
 
         private void ColourTextBoxAndWriteText(string text, Color color)
@@ -113,12 +117,32 @@ namespace FormsModule
             foreach (string file in files) Console.WriteLine(file);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void SaveReportButton_Click(object sender, EventArgs e)
         {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser";
+            saveFileDialog1.Filter = "Text files(*.txt)|*.txt";
+            saveFileDialog1.Title = "Save detailed result report";
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string path = saveFileDialog1.FileName;
+                StreamWriter bw = new StreamWriter(File.Create(path));
+                bw.Write(GetReportText());
+                bw.Close();
+            }
+        }
+
+        private string GetReportText()
+        {
+            return
+                $"File: {trustworthyResult.SecuritySafetyResult.winCheckSecResultObject.Path}{Environment.NewLine}"
+                + $"Time: {DateTime.Now}{Environment.NewLine}"
+                + trustworthyResult.ToString(GetModeFromModeButtons());
 
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

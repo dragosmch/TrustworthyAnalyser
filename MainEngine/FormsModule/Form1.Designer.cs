@@ -35,6 +35,7 @@
             this.basicModeButton = new System.Windows.Forms.RadioButton();
             this.instructionsLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
+            this.saveReportButton = new System.Windows.Forms.Button();
             this.securitySafetyResultLabel = new System.Windows.Forms.Label();
             this.availabilityResultLabel = new System.Windows.Forms.Label();
             this.resultLabel = new System.Windows.Forms.Label();
@@ -65,6 +66,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.CausesValidation = false;
+            this.splitContainer1.Panel2.Controls.Add(this.saveReportButton);
             this.splitContainer1.Panel2.Controls.Add(this.securitySafetyResultLabel);
             this.splitContainer1.Panel2.Controls.Add(this.availabilityResultLabel);
             this.splitContainer1.Panel2.Controls.Add(this.resultLabel);
@@ -73,7 +75,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.fileLocationLabel);
             this.splitContainer1.Panel2.Controls.Add(this.fileLocationBox);
             this.splitContainer1.Panel2.Controls.Add(this.openButton);
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 0;
@@ -141,6 +142,17 @@
             this.welcomeLabel.TabIndex = 2;
             this.welcomeLabel.Text = "Welcome to Trustworthy Analyser!";
             // 
+            // saveReportButton
+            // 
+            this.saveReportButton.Location = new System.Drawing.Point(418, 415);
+            this.saveReportButton.Name = "saveReportButton";
+            this.saveReportButton.Size = new System.Drawing.Size(100, 23);
+            this.saveReportButton.TabIndex = 8;
+            this.saveReportButton.Text = "Save Result File";
+            this.saveReportButton.UseVisualStyleBackColor = true;
+            this.saveReportButton.Visible = false;
+            this.saveReportButton.Click += new System.EventHandler(this.SaveReportButton_Click);
+            // 
             // securitySafetyResultLabel
             // 
             this.securitySafetyResultLabel.AutoSize = true;
@@ -179,7 +191,7 @@
             this.analyseButton.TabIndex = 4;
             this.analyseButton.Text = "Analyse";
             this.analyseButton.UseVisualStyleBackColor = true;
-            this.analyseButton.Click += new System.EventHandler(this.analyseButton_Click);
+            this.analyseButton.Click += new System.EventHandler(this.AnalyseButton_Click);
             // 
             // resultTitleLabel
             // 
@@ -257,6 +269,7 @@
         private System.Windows.Forms.RadioButton mediumModeButton;
         private System.Windows.Forms.RadioButton basicModeButton;
         private System.Windows.Forms.RadioButton advancedModeButton;
+        private System.Windows.Forms.Button saveReportButton;
     }
 }
 

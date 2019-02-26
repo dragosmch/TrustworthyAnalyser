@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="SecuritySafetyDecision.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecuritySafetyResult.cs" />
     <Compile Include="SecuritySafetyRunner.cs" />
     <Compile Include="WinCheckSecResultObject.cs" />
   </ItemGroup>
