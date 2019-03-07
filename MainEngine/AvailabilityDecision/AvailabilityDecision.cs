@@ -1,8 +1,8 @@
 ﻿namespace AvailabilityModule
 {
-    public class AvailabilityDecision
+    public static class AvailabilityDecision
     {
-        private static readonly int TimeoutInMilliseconds = 1500;
+        private const int TimeoutInMilliseconds = 1500;
         private static int NoOfTimesToRun;
 
         public static AvailabilityResult GetAvailabilityDecision(string fileLocation, int mode)

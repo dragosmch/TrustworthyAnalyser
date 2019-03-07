@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.modeLabel = new System.Windows.Forms.Label();
             this.modeOptionBox = new System.Windows.Forms.GroupBox();
             this.advancedModeButton = new System.Windows.Forms.RadioButton();
             this.mediumModeButton = new System.Windows.Forms.RadioButton();
@@ -44,6 +47,8 @@
             this.fileLocationLabel = new System.Windows.Forms.Label();
             this.fileLocationBox = new System.Windows.Forms.TextBox();
             this.openButton = new System.Windows.Forms.Button();
+            this.availabilityExplanation = new System.Windows.Forms.ToolTip(this.components);
+            this.securitySafetyExplanation = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -59,6 +64,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.modeLabel);
             this.splitContainer1.Panel1.Controls.Add(this.modeOptionBox);
             this.splitContainer1.Panel1.Controls.Add(this.instructionsLabel);
             this.splitContainer1.Panel1.Controls.Add(this.welcomeLabel);
@@ -79,12 +85,21 @@
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 0;
             // 
+            // modeLabel
+            // 
+            this.modeLabel.AutoSize = true;
+            this.modeLabel.Location = new System.Drawing.Point(29, 72);
+            this.modeLabel.Name = "modeLabel";
+            this.modeLabel.Size = new System.Drawing.Size(75, 13);
+            this.modeLabel.TabIndex = 5;
+            this.modeLabel.Text = "Analysis Mode";
+            // 
             // modeOptionBox
             // 
             this.modeOptionBox.Controls.Add(this.advancedModeButton);
             this.modeOptionBox.Controls.Add(this.mediumModeButton);
             this.modeOptionBox.Controls.Add(this.basicModeButton);
-            this.modeOptionBox.Location = new System.Drawing.Point(24, 71);
+            this.modeOptionBox.Location = new System.Drawing.Point(25, 88);
             this.modeOptionBox.Name = "modeOptionBox";
             this.modeOptionBox.Size = new System.Drawing.Size(200, 100);
             this.modeOptionBox.TabIndex = 4;
@@ -126,7 +141,7 @@
             // instructionsLabel
             // 
             this.instructionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.instructionsLabel.Location = new System.Drawing.Point(12, 184);
+            this.instructionsLabel.Location = new System.Drawing.Point(22, 210);
             this.instructionsLabel.Name = "instructionsLabel";
             this.instructionsLabel.Size = new System.Drawing.Size(197, 75);
             this.instructionsLabel.TabIndex = 3;
@@ -161,6 +176,7 @@
             this.securitySafetyResultLabel.Name = "securitySafetyResultLabel";
             this.securitySafetyResultLabel.Size = new System.Drawing.Size(0, 17);
             this.securitySafetyResultLabel.TabIndex = 7;
+            this.securitySafetyExplanation.SetToolTip(this.securitySafetyResultLabel, resources.GetString("securitySafetyResultLabel.ToolTip"));
             this.securitySafetyResultLabel.Visible = false;
             // 
             // availabilityResultLabel
@@ -171,6 +187,7 @@
             this.availabilityResultLabel.Name = "availabilityResultLabel";
             this.availabilityResultLabel.Size = new System.Drawing.Size(0, 17);
             this.availabilityResultLabel.TabIndex = 6;
+            this.availabilityExplanation.SetToolTip(this.availabilityResultLabel, "Run the application a specified number of times in order to detect crashes.");
             this.availabilityResultLabel.Visible = false;
             // 
             // resultLabel
@@ -270,6 +287,9 @@
         private System.Windows.Forms.RadioButton basicModeButton;
         private System.Windows.Forms.RadioButton advancedModeButton;
         private System.Windows.Forms.Button saveReportButton;
+        private System.Windows.Forms.Label modeLabel;
+        private System.Windows.Forms.ToolTip availabilityExplanation;
+        private System.Windows.Forms.ToolTip securitySafetyExplanation;
     }
 }
 

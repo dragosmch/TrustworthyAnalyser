@@ -59,18 +59,18 @@ namespace SecuritySafetyModule
             if (resultObject.Aslr) percentage += 20;
             if (resultObject.DynamicBase) percentage += 20;
             if (resultObject.Nx) percentage += 20;
-            if (resultObject.Seh) percentage += 20;
+            if (resultObject.Seh || resultObject.DotNet) percentage += 20;
             if (mode == 0) return percentage;
 
             if (resultObject.Isolation) percentage += 5;
-            if (resultObject.Gs) percentage += 4;
-            if (resultObject.Cfg) percentage += 3;
+            if (resultObject.Gs || resultObject.DotNet) percentage += 4;
+            if (resultObject.Cfg || resultObject.DotNet) percentage += 3;
             if (mode == 1) return percentage;
 
             if (resultObject.HighEntropyVa) percentage += 2;
             if (resultObject.Authenticode) percentage += 2;
-            if (resultObject.SafeSeh) percentage += 2;
-            if (resultObject.Rfg) percentage += 1;
+            if (resultObject.SafeSeh || resultObject.DotNet) percentage += 2;
+            if (resultObject.Rfg || resultObject.DotNet) percentage += 1;
             if (resultObject.ForceIntegrity) percentage += 1;
 
             return percentage;

@@ -1,6 +1,5 @@
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\ReportModule\bin\Debug\ReportModule.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\ReportModule\bin\Debug\ReportModule.pdb
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\ReportModule\obj\Debug\ReportModule.csprojAssemblyReference.cache
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\ReportModule\obj\Debug\ReportModule.csproj.CoreCompileInputs.cache
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\ReportModule\obj\Debug\ReportModule.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\ReportModule\obj\Debug\ReportModule.pdb

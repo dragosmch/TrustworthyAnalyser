@@ -7,7 +7,7 @@ namespace MainEngine
 {
     public static class TrustworthyAnalyzer
     {
-        private static readonly string TestFileLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFailsEveryOtherTime.exe";
+        
         private static TrustworthinessResult TrustworthinessResult = new TrustworthinessResult();
    
         //static void Main(string[] args)
@@ -35,7 +35,7 @@ namespace MainEngine
         public static TrustworthinessResult ReturnResults(string givenFile, int mode)
         {
             TrustworthinessResult.clear();
-            string fileToAnalyse = givenFile ?? TestFileLocation;
+            string fileToAnalyse = givenFile;
             GetAvailabilityDecision(fileToAnalyse, mode);
             GetSecuritySafetyDecision(fileToAnalyse, mode);
             int totalResult = 

@@ -1,11 +1,19 @@
-File: C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatReadsNumberFromFileAndFails.exe
-Time: 26/02/2019 12:09:10
-Successful availability runs: 1/3
-Security and Safety protection score: 60/80
+File: C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Release\FormsModule.exe
+Time: 06/03/2019 09:54:59
+Successful availability runs: 10/10
+Security and Safety protection score: 67/100
 Safe compilation settings: 
 DynamicBase: True
 Aslr: True
 Nx: True
 Seh: False
+Isolation: True
+Gs: False
+Cfg: False
+HighEntropyVa: True
+ForceIntegrity: False
+Rfg: False
+SafeSeh: False
+Authenticode: False
 
-Final result: Inconclusive
+Final result: NotTrustworthy

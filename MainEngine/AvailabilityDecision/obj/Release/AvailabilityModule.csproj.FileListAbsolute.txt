@@ -3,4 +3,3 @@ C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDeci
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Release\AvailabilityModule.csproj.CoreCompileInputs.cache
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Release\AvailabilityDecision.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Release\AvailabilityDecision.pdb
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Release\AvailabilityModule.csprojAssemblyReference.cache

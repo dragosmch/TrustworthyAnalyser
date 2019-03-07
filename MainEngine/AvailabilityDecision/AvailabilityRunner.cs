@@ -2,10 +2,11 @@
 using System.Management;
 using System;
 using System.Threading;
+using System.Globalization;
 
 namespace AvailabilityModule
 {
-    public class AvailabilityRunner
+    public static class AvailabilityRunner
     {
 
         // Returns number of runs that were successful(no errors occured)

@@ -13,9 +13,6 @@ namespace FormsModule
         public Form1()
         {
             InitializeComponent();
-            AllowDrop = true;
-            DragEnter += new DragEventHandler(Form1_DragEnter);
-            DragDrop += new DragEventHandler(Form1_DragDrop);
         }
 
         private void openButton_Click(object sender, EventArgs e)
@@ -100,21 +97,7 @@ namespace FormsModule
             availabilityResultLabel.Visible = false;
             securitySafetyResultLabel.Visible = false;
             resultLabel.Visible = false;
-        }
-
-        private void Form1_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Link;
-        }
-
-        private void Form1_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (files.Length == 1)
-            {
-                fileLocationBox.Text = files[0];
-            }
-            foreach (string file in files) Console.WriteLine(file);
+            saveReportButton.Visible = false;
         }
 
         private void SaveReportButton_Click(object sender, EventArgs e)
@@ -139,12 +122,10 @@ namespace FormsModule
                 $"File: {trustworthyResult.SecuritySafetyResult.winCheckSecResultObject.Path}{Environment.NewLine}"
                 + $"Time: {DateTime.Now}{Environment.NewLine}"
                 + trustworthyResult.ToString(GetModeFromModeButtons());
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
