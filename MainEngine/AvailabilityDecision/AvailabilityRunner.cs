@@ -2,7 +2,9 @@
 using System.Management;
 using System;
 using System.Globalization;
+using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace AvailabilityModule
 {
@@ -13,10 +15,18 @@ namespace AvailabilityModule
         public static int RunExecutableMultipleTimes(string fileLocation, int noOfRuns, int timeout)
         {
             int resultOfRuns = 0;
-            for (int i = 0; i < noOfRuns; i++)
-            {
-                resultOfRuns +=  RunExecutable(fileLocation, timeout);
-            }
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            //for (int i = 0; i < noOfRuns; i++)
+            //{
+            //    resultOfRuns += RunExecutable(fileLocation, timeout);
+            //}
+            Parallel.For(0, noOfRuns, actionBody =>
+                {
+                    int resultOfThisRun = RunExecutable(fileLocation, timeout);
+                    Interlocked.Add(ref resultOfRuns, resultOfThisRun);
+                });
+            Console.WriteLine(sw.ElapsedMilliseconds);
             return resultOfRuns;
         }
 
