@@ -18,7 +18,7 @@ namespace MainEngine
         }
 
         // this should be deleted, it is nasty
-        public void clear()
+        public void Clear()
         {
             TrustworthinessLevel = TrustworthyApplicationLevel.NotSet;
         }
@@ -30,12 +30,5 @@ namespace MainEngine
         NotTrustworthy,
         Inconclusive,
         NotSet
-    }
-
-    public enum TrustworthyAccuracy
-    {
-        Basic,
-        Medium,
-        Advanced
     }
 }

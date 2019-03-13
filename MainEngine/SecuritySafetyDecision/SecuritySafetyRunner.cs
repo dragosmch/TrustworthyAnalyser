@@ -8,22 +8,22 @@ namespace SecuritySafetyModule
 
         private const string ScriptLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\WinCheckSec\build\Release\winchecksec.exe";
         private const string TestFileLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\PhotoScapeSetup.exe";
-        private static string outputResults = "";
+        private static string _outputResults = "";
 
         public static WinCheckSecResultObject GetWinCheckSecResultObject(string fileLocation)
         {
             CallWinCheckSec(fileLocation);
-            if (outputResults != "")
+            if (_outputResults != "")
             {
-                var resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject<WinCheckSecResultObject>(outputResults);
-                outputResults = "";
+                var resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject<WinCheckSecResultObject>(_outputResults);
+                _outputResults = "";
                 return resultObject;
 
             }
             return null;
         }
 
-        static void CallWinCheckSec(string fileLocation)
+        private static void CallWinCheckSec(string fileLocation)
         {
             string fileToAnalyse = fileLocation != null ? "\"" + fileLocation + "\"" : TestFileLocation;
             ProcessStartInfo startInfo = new ProcessStartInfo()
@@ -62,7 +62,7 @@ namespace SecuritySafetyModule
 
         private static void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            if (outputResults == "") outputResults += e.Data;
+            if (_outputResults.Length == 0) _outputResults += e.Data;
         }
     }
 }

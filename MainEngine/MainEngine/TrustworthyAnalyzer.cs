@@ -8,33 +8,11 @@ namespace MainEngine
     public static class TrustworthyAnalyzer
     {
         
-        private static TrustworthinessResult TrustworthinessResult = new TrustworthinessResult();
-   
-        //static void Main(string[] args)
-        //{
-        //    Stopwatch clock = new Stopwatch();
-        //    clock.Start();
-        //    string fileToAnalyse = args.Length == 1 ? args[0] : TestFileLocation;
-        //    GetAvailabilityDecision(fileToAnalyse);
-        //    GetSecuritySafetyDecision(fileToAnalyse);
-        //    //OutputResults();
-        //    long timePassed = clock.ElapsedMilliseconds / 1000;
-        //}
-
-        private static void OutputResults(int totalResult)
-        {
-            if (totalResult >= 2)
-                ConsoleWriteLineWithColour("Trustworthy", ConsoleColor.Green);
-            else if (totalResult == 0)
-                ConsoleWriteLineWithColour("Not Trustworthy", ConsoleColor.Red);
-            else
-                ConsoleWriteLineWithColour("Inconclusive result", ConsoleColor.Yellow);
-            Thread.Sleep(5000);
-        }
+        private static readonly TrustworthinessResult TrustworthinessResult = new TrustworthinessResult();
 
         public static TrustworthinessResult ReturnResults(string givenFile, int mode)
         {
-            TrustworthinessResult.clear();
+            TrustworthinessResult.Clear();
             string fileToAnalyse = givenFile;
             GetAvailabilityDecision(fileToAnalyse, mode);
             GetSecuritySafetyDecision(fileToAnalyse, mode);

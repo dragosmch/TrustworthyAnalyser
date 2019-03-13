@@ -6,7 +6,7 @@ namespace SecuritySafetyModule
         public static SecuritySafetyResult GetSecuritySafetyDecision(string fileLocation, int mode)
         {
             var resultObject = SecuritySafetyRunner.GetWinCheckSecResultObject(fileLocation);
-            int percentageResult = GetSecuritySafetyPercentage(resultObject, mode);
+            var percentageResult = GetSecuritySafetyPercentage(resultObject, mode);
             // -1, 0 or 1
             int ternaryResult = GetSecuritySafetyResultFromPercentage(percentageResult, mode);
             return new SecuritySafetyResult
@@ -59,18 +59,38 @@ namespace SecuritySafetyModule
             if (resultObject.Aslr) percentage += 20;
             if (resultObject.DynamicBase) percentage += 20;
             if (resultObject.Nx) percentage += 20;
-            if (resultObject.Seh || resultObject.DotNet) percentage += 20;
+            if (resultObject.Seh || resultObject.DotNet)
+            {
+                percentage += 20;
+                resultObject.Seh = true;
+            }
             if (mode == 0) return percentage;
 
             if (resultObject.Isolation) percentage += 5;
-            if (resultObject.Gs || resultObject.DotNet) percentage += 4;
-            if (resultObject.Cfg || resultObject.DotNet) percentage += 3;
+            if (resultObject.Gs || resultObject.DotNet)
+            {
+                percentage += 4;
+                resultObject.Gs = true;
+            }
+            if (resultObject.Cfg || resultObject.DotNet)
+            {
+                percentage += 3;
+                resultObject.Cfg = true;
+            }
             if (mode == 1) return percentage;
 
             if (resultObject.HighEntropyVa) percentage += 2;
             if (resultObject.Authenticode) percentage += 2;
-            if (resultObject.SafeSeh || resultObject.DotNet) percentage += 2;
-            if (resultObject.Rfg || resultObject.DotNet) percentage += 1;
+            if (resultObject.SafeSeh || resultObject.DotNet)
+            {
+                percentage += 2;
+                resultObject.SafeSeh = true;
+            }
+            if (resultObject.Rfg || resultObject.DotNet)
+            {
+                percentage += 1;
+                resultObject.Rfg = true;
+            }
             if (resultObject.ForceIntegrity) percentage += 1;
 
             return percentage;

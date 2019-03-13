@@ -8,7 +8,7 @@ namespace FormsModule
 {
     public sealed partial class Form1 : Form
     {
-        private static TrustworthinessResult trustworthyResult;
+        private static TrustworthinessResult _trustworthyResult;
 
         public Form1()
         {
@@ -40,18 +40,18 @@ namespace FormsModule
             {
                 analyseButton.Enabled = false;
                 int mode = GetModeFromModeButtons();
-                trustworthyResult = TrustworthyAnalyzer.ReturnResults(fileLocation, mode);
-                OutputResults(trustworthyResult, mode);
+                _trustworthyResult = TrustworthyAnalyzer.ReturnResults(fileLocation, mode);
+                OutputResults(_trustworthyResult);
             }
             analyseButton.Enabled = true;
             saveReportButton.Visible = true;
         }
 
-        private void OutputResults(TrustworthinessResult trustworthyResult, int mode)
+        private void OutputResults(TrustworthinessResult trustworthyResult)
         {
             OutputMainResult(trustworthyResult.TrustworthinessLevel);
             OutputAvailabilityResult(trustworthyResult);
-            OutputSecuritySafetyyResult(trustworthyResult, mode);
+            OutputSecuritySafetyResult(trustworthyResult);
         }
 
         private void OutputMainResult(TrustworthyApplicationLevel level)
@@ -70,7 +70,7 @@ namespace FormsModule
             availabilityResultLabel.Text = result.AvailabilityResult.ToString();
         }
 
-        private void OutputSecuritySafetyyResult(TrustworthinessResult result, int mode)
+        private void OutputSecuritySafetyResult(TrustworthinessResult result)
         {
             securitySafetyResultLabel.Visible = true;
             securitySafetyResultLabel.Text = result.SecuritySafetyResult.ToString();
@@ -119,9 +119,9 @@ namespace FormsModule
         private string GetReportText()
         {
             return
-                $"File: {trustworthyResult.SecuritySafetyResult.winCheckSecResultObject.Path}{Environment.NewLine}"
+                $"File: {_trustworthyResult.SecuritySafetyResult.winCheckSecResultObject.Path}{Environment.NewLine}"
                 + $"Time: {DateTime.Now}{Environment.NewLine}"
-                + trustworthyResult.ToString(GetModeFromModeButtons());
+                + _trustworthyResult.ToString(GetModeFromModeButtons());
         }
 
         private void Form1_Load(object sender, EventArgs e)

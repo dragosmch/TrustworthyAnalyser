@@ -2,7 +2,6 @@
 using System.Management;
 using System;
 using System.Threading;
-using System.Globalization;
 
 namespace AvailabilityModule
 {
