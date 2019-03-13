@@ -15,19 +15,19 @@ namespace FormsModule
             InitializeComponent();
         }
 
-        private void openButton_Click(object sender, EventArgs e)
+        private void OpenButton_Click(object sender, EventArgs e)
         {
             // Wrap the creation of the OpenFileDialog instance in a using statement,
             // rather than manually calling the Dispose method to ensure proper disposal
-            using (OpenFileDialog dlg = new OpenFileDialog())
+            using (var openFileDialog = new OpenFileDialog())
             {
-                dlg.Title = "Open file";
-                dlg.InitialDirectory = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles";
-                dlg.Filter = "Executables(*.exe)|*.exe|All files(*.*)|*.*";
+                openFileDialog.Title = @"Open file";
+                openFileDialog.InitialDirectory = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles";
+                openFileDialog.Filter = @"Executables(*.exe)|*.exe|All files(*.*)|*.*";
 
-                if (dlg.ShowDialog() == DialogResult.OK)
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    fileLocationBox.Text = dlg.FileName;
+                    fileLocationBox.Text = openFileDialog.FileName;
                 }
             }
         }
@@ -41,10 +41,21 @@ namespace FormsModule
                 analyseButton.Enabled = false;
                 int mode = GetModeFromModeButtons();
                 _trustworthyResult = TrustworthyAnalyzer.ReturnResults(fileLocation, mode);
+                if (_trustworthyResult == null)
+                {
+                    ShowFailureMessage("Please select an executable file.", "Cannot analyse this file");
+                    analyseButton.Enabled = true;
+                    return;
+                }
                 OutputResults(_trustworthyResult);
             }
             analyseButton.Enabled = true;
             saveReportButton.Visible = true;
+        }
+
+        private static void ShowFailureMessage(string bodyText, string title)
+        {
+            MessageBox.Show(bodyText, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void OutputResults(TrustworthinessResult trustworthyResult)
@@ -56,12 +67,18 @@ namespace FormsModule
 
         private void OutputMainResult(TrustworthyApplicationLevel level)
         {
-            if (level == TrustworthyApplicationLevel.Trustworthy)
-                ColourTextBoxAndWriteText("Trustworthy", Color.Green);
-            else if (level == TrustworthyApplicationLevel.NotTrustworthy)
-                ColourTextBoxAndWriteText("Not Trustworthy", Color.Red);
-            else
-                ColourTextBoxAndWriteText("Inconclusive result", Color.Yellow);
+            switch (level)
+            {
+                case TrustworthyApplicationLevel.Trustworthy:
+                    ColourTextBoxAndWriteText("Trustworthy", Color.Green);
+                    break;
+                case TrustworthyApplicationLevel.NotTrustworthy:
+                    ColourTextBoxAndWriteText("Not Trustworthy", Color.Red);
+                    break;
+                default:
+                    ColourTextBoxAndWriteText("Inconclusive result", Color.Yellow);
+                    break;
+            }
         }
 
         private void OutputAvailabilityResult(TrustworthinessResult result)
@@ -89,6 +106,7 @@ namespace FormsModule
                 return 1;
             if (advancedModeButton.Checked)
                 return 2;
+            // basic mode
             return 0;
         }
 
@@ -102,24 +120,34 @@ namespace FormsModule
 
         private void SaveReportButton_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.InitialDirectory = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser";
-            saveFileDialog1.Filter = "Text files(*.txt)|*.txt";
-            saveFileDialog1.Title = "Save detailed result report";
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            var saveFileDialog = new SaveFileDialog
             {
-                string path = saveFileDialog1.FileName;
-                StreamWriter bw = new StreamWriter(File.Create(path));
-                bw.Write(GetReportText());
-                bw.Close();
+                InitialDirectory = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser",
+                Filter = @"Text files(*.txt)|*.txt",
+                Title = @"Save detailed result report"
+            };
+
+            if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+
+            string path = saveFileDialog.FileName;
+            try
+            {
+                var streamWriter = new StreamWriter(File.Create(path));
+                streamWriter.Write(GetReportText());
+                streamWriter.Close();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                ShowFailureMessage("Please try again.", "Cannot save file in the chosen folder");
+
             }
         }
 
         private string GetReportText()
         {
             return
-                $"File: {_trustworthyResult.SecuritySafetyResult.winCheckSecResultObject.Path}{Environment.NewLine}"
+                $"File: {_trustworthyResult.SecuritySafetyResult.WinCheckSecResultObject.Path}{Environment.NewLine}"
                 + $"Time: {DateTime.Now}{Environment.NewLine}"
                 + _trustworthyResult.ToString(GetModeFromModeButtons());
         }

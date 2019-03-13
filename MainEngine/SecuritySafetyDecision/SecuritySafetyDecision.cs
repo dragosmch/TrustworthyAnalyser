@@ -15,7 +15,7 @@ namespace SecuritySafetyModule
                 SafetyAndSecurityPercentage = percentageResult,
                 SafetyAndSecurityPercentageBase = GetSecuritySafetyMaxPercentage(mode),
                 Security = ternaryResult,
-                winCheckSecResultObject = resultObject
+                WinCheckSecResultObject = resultObject
 
             };
         }
@@ -55,6 +55,7 @@ namespace SecuritySafetyModule
 
         private static int GetSecuritySafetyPercentage(WinCheckSecResultObject resultObject, int mode)
         {
+            if (resultObject == null) return -1;
             int percentage = 0;
             if (resultObject.Aslr) percentage += 20;
             if (resultObject.DynamicBase) percentage += 20;

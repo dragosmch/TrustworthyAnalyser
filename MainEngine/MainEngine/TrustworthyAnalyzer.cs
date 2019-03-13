@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.IO;
 using AvailabilityModule;
 using SecuritySafetyModule;
 
@@ -10,10 +9,11 @@ namespace MainEngine
         
         private static readonly TrustworthinessResult TrustworthinessResult = new TrustworthinessResult();
 
-        public static TrustworthinessResult ReturnResults(string givenFile, int mode)
+        public static TrustworthinessResult ReturnResults(string pathToFile, int mode)
         {
-            TrustworthinessResult.Clear();
-            string fileToAnalyse = givenFile;
+            if (!File.Exists(pathToFile) || !pathToFile.Contains(".exe")) return null;
+
+            string fileToAnalyse = pathToFile;
             GetAvailabilityDecision(fileToAnalyse, mode);
             GetSecuritySafetyDecision(fileToAnalyse, mode);
             int totalResult = 
@@ -36,13 +36,6 @@ namespace MainEngine
         private static void GetSecuritySafetyDecision(string fileToAnalyse, int mode)
         {
             TrustworthinessResult.SecuritySafetyResult = SecuritySafetyDecision.GetSecuritySafetyDecision(fileToAnalyse, mode);
-        }
-
-        private static void ConsoleWriteLineWithColour(string text, ConsoleColor colour)
-        {
-            Console.ForegroundColor = colour;
-            Console.WriteLine(text);
-            Console.ResetColor();
         }
     }
 }

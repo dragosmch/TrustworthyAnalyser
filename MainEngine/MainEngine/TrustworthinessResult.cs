@@ -6,9 +6,9 @@ namespace MainEngine
 {
     public class TrustworthinessResult
     {
-        public TrustworthyApplicationLevel TrustworthinessLevel;
-        public SecuritySafetyResult SecuritySafetyResult;
-        public AvailabilityResult AvailabilityResult;
+        public TrustworthyApplicationLevel TrustworthinessLevel { get; set; }
+        public SecuritySafetyResult SecuritySafetyResult { get; set; }
+        public AvailabilityResult AvailabilityResult { get; set; }
         //public int Resilience;
         //public int Reliability;
 
@@ -16,19 +16,12 @@ namespace MainEngine
         {
             return $"{AvailabilityResult}{SecuritySafetyResult.ToLongString(mode)}{Environment.NewLine}Final result: {TrustworthinessLevel}";
         }
-
-        // this should be deleted, it is nasty
-        public void Clear()
-        {
-            TrustworthinessLevel = TrustworthyApplicationLevel.NotSet;
-        }
     }
 
     public enum TrustworthyApplicationLevel
     {
         Trustworthy,
         NotTrustworthy,
-        Inconclusive,
-        NotSet
+        Inconclusive
     }
 }

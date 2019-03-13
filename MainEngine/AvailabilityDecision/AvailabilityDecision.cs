@@ -7,7 +7,7 @@
 
         public static AvailabilityResult GetAvailabilityDecision(string fileLocation, int mode)
         {
-            int noOfSuccessfulRuns = GetAvailabilityNoOfSuccessfulRunsResult(fileLocation, mode);
+            var noOfSuccessfulRuns = GetAvailabilityNoOfSuccessfulRunsResult(fileLocation, mode);
             return new AvailabilityResult
             {
                 Availability = GetAvailabilityResultFromRuns(noOfSuccessfulRuns),
@@ -26,6 +26,7 @@
                 case 2:
                     _noOfTimesToRun = 10;
                     break;
+                
                 default:
                     _noOfTimesToRun = 3;
                     break;

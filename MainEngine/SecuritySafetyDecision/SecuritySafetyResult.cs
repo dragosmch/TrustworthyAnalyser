@@ -4,15 +4,15 @@ namespace SecuritySafetyModule
 {
     public class SecuritySafetyResult
     {
-        public int Safety;
-        public int SafetyAndSecurityPercentage;
-        public int SafetyAndSecurityPercentageBase;
-        public int Security;
-        public WinCheckSecResultObject winCheckSecResultObject;
+        public int Safety { get; set; }
+        public int SafetyAndSecurityPercentage { get; set; }
+        public int SafetyAndSecurityPercentageBase { get; set; }
+        public int Security { get; set; }
+        public WinCheckSecResultObject WinCheckSecResultObject { get; set; }
 
         public string ToLongString(int mode)
         {
-            return ToString() + winCheckSecResultObject.ToString(mode);
+            return ToString() + WinCheckSecResultObject.ToString(mode);
         }
         public override string ToString()
         {

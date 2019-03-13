@@ -3,30 +3,26 @@ using System.Diagnostics;
 
 namespace SecuritySafetyModule
 {
-    class SecuritySafetyRunner
+    internal class SecuritySafetyRunner
     {
 
         private const string ScriptLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\WinCheckSec\build\Release\winchecksec.exe";
-        private const string TestFileLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\PhotoScapeSetup.exe";
         private static string _outputResults = "";
 
         public static WinCheckSecResultObject GetWinCheckSecResultObject(string fileLocation)
         {
-            CallWinCheckSec(fileLocation);
-            if (_outputResults != "")
-            {
-                var resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject<WinCheckSecResultObject>(_outputResults);
-                _outputResults = "";
-                return resultObject;
+            if (!CallWinCheckSec(fileLocation) || _outputResults.Length == 0) return null;
 
-            }
-            return null;
+            var resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject<WinCheckSecResultObject>(_outputResults);
+            _outputResults = "";
+            return resultObject;
         }
 
-        private static void CallWinCheckSec(string fileLocation)
+        private static bool CallWinCheckSec(string fileLocation)
         {
-            string fileToAnalyse = fileLocation != null ? "\"" + fileLocation + "\"" : TestFileLocation;
-            ProcessStartInfo startInfo = new ProcessStartInfo()
+            if (string.IsNullOrEmpty(fileLocation)) return false;
+            string fileToAnalyse = "\"" + fileLocation + "\"";
+            var startInfo = new ProcessStartInfo
             {
                 FileName = ScriptLocation,
                 Arguments = "-j " + fileToAnalyse,
@@ -40,18 +36,20 @@ namespace SecuritySafetyModule
             {
                 // Start the process with the info we specified.
                 // Call WaitForExit and then the using statement will close.
-                using (Process exeProcess = Process.Start(startInfo))
+                using (var exeProcess = Process.Start(startInfo))
                 {
+                    if (exeProcess == null) return false;
                     exeProcess.OutputDataReceived += OnOutputDataReceived;
                     exeProcess.ErrorDataReceived += ErrorDataReceived;
                     exeProcess.BeginOutputReadLine();
                     exeProcess.WaitForExit();
                 }
+                return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                // Log error.
+                return false;
             }
         }
 

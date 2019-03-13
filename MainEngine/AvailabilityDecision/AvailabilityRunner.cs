@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Management;
 using System;
+using System.Globalization;
 using System.Threading;
 
 namespace AvailabilityModule
@@ -24,7 +25,7 @@ namespace AvailabilityModule
         // Returns 1 if execution was normal, 0 if exception was caught or problem stopped running
         private static int RunExecutable(string fileLocation, int timeout)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo()
+            var processStartInfo = new ProcessStartInfo
             {
                 FileName = fileLocation,
                 WindowStyle = ProcessWindowStyle.Hidden,
@@ -35,18 +36,16 @@ namespace AvailabilityModule
 
             try
             {
-                using (Process exeProcess = Process.Start(startInfo))
+                using (var exeProcess = Process.Start(processStartInfo))
                 {
                     Thread.Sleep(1000);
                     // Kill the process if is running more than a threshold
-                    if (!exeProcess.WaitForExit(timeout))
-                    {
-                        KillProcessAndChildrens(exeProcess.Id);
-                        // if we had to kill it, it means it ran fine for a while
-                        return 1;
-                    }
+                    if (exeProcess == null || exeProcess.WaitForExit(timeout)) return 0;
+
+                    KillProcessAndChildren(exeProcess.Id);
+                    // if we had to kill it, it means it ran fine for a while
+                    return 1;
                 }
-                return 0;
             }
             // If exception, means run was failure
             catch
@@ -55,23 +54,22 @@ namespace AvailabilityModule
             }
         }
 
-        private static void KillProcessAndChildrens(int pid)
+        private static void KillProcessAndChildren(int pid)
         {
-            ManagementObjectSearcher processSearcher = new ManagementObjectSearcher
+            var culture = CultureInfo.InvariantCulture;
+            var processSearcher = new ManagementObjectSearcher
               ("Select * From Win32_Process Where ParentProcessID=" + pid);
-            ManagementObjectCollection processCollection = processSearcher.Get();
+            var processCollection = processSearcher.Get();
 
             // We must kill child processes first!
-            if (processCollection != null)
+            foreach (var processObject in processCollection)
             {
-                foreach (ManagementObject mo in processCollection)
-                {
-                    // kill child processes(also kills children of children etc.)
-                    KillProcessAndChildrens(Convert.ToInt32(mo["ProcessID"]));
-                }
+                var managementObject = (ManagementObject) processObject;
+                // kill child processes(also kills children of children etc.)
+                KillProcessAndChildren(Convert.ToInt32(managementObject["ProcessID"], culture));
             }
-            Process proc = Process.GetProcessById(pid);
-            if (!proc.HasExited) proc.Kill();
+            var process = Process.GetProcessById(pid);
+            if (!process.HasExited) process.Kill();
 
         }
     }
