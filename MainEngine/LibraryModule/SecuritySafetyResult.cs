@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SecuritySafetyModule
+namespace LibraryModule
 {
     public class SecuritySafetyResult
     {
@@ -10,7 +10,7 @@ namespace SecuritySafetyModule
         public int Security { get; set; }
         public WinCheckSecResultObject WinCheckSecResultObject { get; set; }
 
-        public string ToLongString(int mode)
+        public string ToLongString(AnalysisMode mode)
         {
             return ToString() + WinCheckSecResultObject.ToString(mode);
         }

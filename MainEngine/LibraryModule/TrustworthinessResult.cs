@@ -1,27 +1,16 @@
-﻿using AvailabilityModule;
-using SecuritySafetyModule;
-using System;
+﻿using System;
 
-namespace MainEngine
+namespace LibraryModule
 {
     public class TrustworthinessResult
     {
         public TrustworthyApplicationLevel TrustworthinessLevel { get; set; }
         public SecuritySafetyResult SecuritySafetyResult { get; set; }
         public AvailabilityResult AvailabilityResult { get; set; }
-        //public int Resilience;
-        //public int Reliability;
 
-        public string ToString(int mode)
+        public string ToString(AnalysisMode mode)
         {
             return $"{AvailabilityResult}{SecuritySafetyResult.ToLongString(mode)}{Environment.NewLine}Final result: {TrustworthinessLevel}";
         }
-    }
-
-    public enum TrustworthyApplicationLevel
-    {
-        Trustworthy,
-        NotTrustworthy,
-        Inconclusive
     }
 }

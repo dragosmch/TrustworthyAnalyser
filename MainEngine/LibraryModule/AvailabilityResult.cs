@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AvailabilityModule
+namespace LibraryModule
 {
     public class AvailabilityResult
     {

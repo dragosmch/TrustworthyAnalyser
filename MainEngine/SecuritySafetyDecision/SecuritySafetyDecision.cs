@@ -1,9 +1,12 @@
 ﻿
+using System;
+using LibraryModule;
+
 namespace SecuritySafetyModule
 {
     public static class SecuritySafetyDecision
     {
-        public static SecuritySafetyResult GetSecuritySafetyDecision(string fileLocation, int mode)
+        public static SecuritySafetyResult GetSecuritySafetyDecision(string fileLocation, AnalysisMode mode)
         {
             var resultObject = SecuritySafetyRunner.GetWinCheckSecResultObject(fileLocation);
             var percentageResult = GetSecuritySafetyPercentage(resultObject, mode);
@@ -20,40 +23,44 @@ namespace SecuritySafetyModule
             };
         }
 
-        private static int GetSecuritySafetyResultFromPercentage(int percentage, int mode)
+        private static int GetSecuritySafetyResultFromPercentage(int percentage, AnalysisMode mode)
         {
             switch (mode)
             {
-                case 1:
+                case AnalysisMode.Basic:
+                    if (percentage > 50) return 1;
+                    if (percentage >= 40) return 0;
+                    return -1;
+                case AnalysisMode.Medium:
                     if (percentage > 70) return 1;
                     if (percentage >= 60) return 0;
                     return -1;
-                case 2:
+                case AnalysisMode.Advanced:
                     if (percentage > 90) return 1;
                     if (percentage >= 70) return 0;
                     return -1;
                 default:
-                    if (percentage > 50) return 1;
-                    if (percentage >= 40) return 0;
-                    return -1;               
+                    throw new Exception("Unknown analysis mode!");
             }
         }
 
-        private static int GetSecuritySafetyMaxPercentage(int mode)
+        private static int GetSecuritySafetyMaxPercentage(AnalysisMode mode)
         {
             switch (mode)
             {
-                case 1:
+                case AnalysisMode.Basic:
+                    return 80;
+                case AnalysisMode.Medium:
                     return 92;
-                case 2:
+                case AnalysisMode.Advanced:
                     return 100;
                 default:
-                    return 80;
+                    throw new Exception("Unknown analysis mode!");
             }
         }
         
 
-        private static int GetSecuritySafetyPercentage(WinCheckSecResultObject resultObject, int mode)
+        private static int GetSecuritySafetyPercentage(WinCheckSecResultObject resultObject, AnalysisMode mode)
         {
             if (resultObject == null) return -1;
             int percentage = 0;
@@ -65,7 +72,7 @@ namespace SecuritySafetyModule
                 percentage += 20;
                 resultObject.Seh = true;
             }
-            if (mode == 0) return percentage;
+            if (mode == AnalysisMode.Basic) return percentage;
 
             if (resultObject.Isolation) percentage += 5;
             if (resultObject.Gs || resultObject.DotNet)
@@ -78,8 +85,9 @@ namespace SecuritySafetyModule
                 percentage += 3;
                 resultObject.Cfg = true;
             }
-            if (mode == 1) return percentage;
+            if (mode == AnalysisMode.Medium) return percentage;
 
+            // if the mode is Advanced, compute final percentage with all properties
             if (resultObject.HighEntropyVa) percentage += 2;
             if (resultObject.Authenticode) percentage += 2;
             if (resultObject.SafeSeh || resultObject.DotNet)

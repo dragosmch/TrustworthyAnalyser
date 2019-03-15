@@ -2,9 +2,11 @@ C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\D
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\MainEngine.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\MainEngine.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\AvailabilityDecision.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\LibraryModule.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\SecuritySafetyDecision.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\AvailabilityDecision.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\LibraryModule.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\SecuritySafetyDecision.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\MainEngine\bin\Debug\Newtonsoft.Json.xml

@@ -2,10 +2,12 @@ C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\FormsModule.exe
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\FormsModule.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\AvailabilityDecision.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\LibraryModule.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\MainEngine.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\SecuritySafetyDecision.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\AvailabilityDecision.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\LibraryModule.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\MainEngine.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\MainEngine.dll.config
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\SecuritySafetyDecision.pdb

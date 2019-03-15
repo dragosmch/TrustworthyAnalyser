@@ -92,6 +92,10 @@
       <Project>{284610F8-7924-4DBD-95FC-4C9DE5353916}</Project>
       <Name>AvailabilityModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LibraryModule\LibraryModule.csproj">
+      <Project>{F84A4BB3-D4DB-47E5-B7A6-3FC194C066F5}</Project>
+      <Name>LibraryModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MainEngine\MainEngine.csproj">
       <Project>{84b55137-014b-448c-97de-fc3c7d7b90e5}</Project>
       <Name>MainEngine</Name>

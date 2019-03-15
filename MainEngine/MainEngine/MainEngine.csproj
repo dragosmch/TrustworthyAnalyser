@@ -66,7 +66,6 @@
   <ItemGroup>
     <Compile Include="TrustworthyAnalyzer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TrustworthinessResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -79,6 +78,10 @@
     <ProjectReference Include="..\AvailabilityDecision\AvailabilityModule.csproj">
       <Project>{284610f8-7924-4dbd-95fc-4c9de5353916}</Project>
       <Name>AvailabilityModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibraryModule\LibraryModule.csproj">
+      <Project>{f84a4bb3-d4db-47e5-b7a6-3fc194c066f5}</Project>
+      <Name>LibraryModule</Name>
     </ProjectReference>
     <ProjectReference Include="..\SecuritySafetyDecision\SecuritySafetyModule.csproj">
       <Project>{799EAED5-0479-4760-8421-DBB73D17CD27}</Project>

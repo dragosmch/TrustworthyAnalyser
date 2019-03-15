@@ -1,8 +1,10 @@
-﻿using MainEngine;
-using System;
+﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using LibraryModule;
+using MainEngine;
 
 namespace FormsModule
 {
@@ -17,8 +19,6 @@ namespace FormsModule
 
         private void OpenButton_Click(object sender, EventArgs e)
         {
-            // Wrap the creation of the OpenFileDialog instance in a using statement,
-            // rather than manually calling the Dispose method to ensure proper disposal
             using (var openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Title = @"Open file";
@@ -34,13 +34,15 @@ namespace FormsModule
 
         private void AnalyseButton_Click(object sender, EventArgs e)
         {
+            // Remove stop watch before submission
+            var sw = new Stopwatch();
+            sw.Start();
             HideResults();
             string fileLocation = fileLocationBox.Text;
             if (!string.IsNullOrEmpty(fileLocation))
             {
                 analyseButton.Enabled = false;
-                int mode = GetModeFromModeButtons();
-                _trustworthyResult = TrustworthyAnalyzer.ReturnResults(fileLocation, mode);
+                _trustworthyResult = TrustworthyAnalyzer.ReturnResults(fileLocation, GetModeFromModeButtons());
                 if (_trustworthyResult == null)
                 {
                     ShowFailureMessage("Please select an executable file.", "Cannot analyse this file");
@@ -51,6 +53,7 @@ namespace FormsModule
             }
             analyseButton.Enabled = true;
             saveReportButton.Visible = true;
+            Console.WriteLine(sw.ElapsedMilliseconds);
         }
 
         private static void ShowFailureMessage(string bodyText, string title)
@@ -75,9 +78,11 @@ namespace FormsModule
                 case TrustworthyApplicationLevel.NotTrustworthy:
                     ColourTextBoxAndWriteText("Not Trustworthy", Color.Red);
                     break;
-                default:
+                case TrustworthyApplicationLevel.Inconclusive:
                     ColourTextBoxAndWriteText("Inconclusive result", Color.Yellow);
                     break;
+                default:
+                    throw new Exception("Unknown trustworthiness level!");
             }
         }
 
@@ -100,14 +105,11 @@ namespace FormsModule
             resultLabel.Visible = true;
         }
 
-        private int GetModeFromModeButtons()
+        private AnalysisMode GetModeFromModeButtons()
         {
-            if (mediumModeButton.Checked)
-                return 1;
-            if (advancedModeButton.Checked)
-                return 2;
-            // basic mode
-            return 0;
+            if (basicModeButton.Checked)
+                return AnalysisMode.Basic;
+            return mediumModeButton.Checked ? AnalysisMode.Medium : AnalysisMode.Advanced;
         }
 
         private void HideResults()

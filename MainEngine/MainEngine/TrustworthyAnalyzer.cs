@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using AvailabilityModule;
+using LibraryModule;
 using SecuritySafetyModule;
 
 namespace MainEngine
@@ -9,7 +10,7 @@ namespace MainEngine
         
         private static readonly TrustworthinessResult TrustworthinessResult = new TrustworthinessResult();
 
-        public static TrustworthinessResult ReturnResults(string pathToFile, int mode)
+        public static TrustworthinessResult ReturnResults(string pathToFile, AnalysisMode mode)
         {
             if (!File.Exists(pathToFile) || !pathToFile.Contains(".exe")) return null;
 
@@ -29,11 +30,11 @@ namespace MainEngine
             return TrustworthinessResult;
         }
 
-        private static void GetAvailabilityDecision(string fileToAnalyse, int mode)
+        private static void GetAvailabilityDecision(string fileToAnalyse, AnalysisMode mode)
         {
             TrustworthinessResult.AvailabilityResult = AvailabilityDecision.GetAvailabilityDecision(fileToAnalyse, mode);
         }
-        private static void GetSecuritySafetyDecision(string fileToAnalyse, int mode)
+        private static void GetSecuritySafetyDecision(string fileToAnalyse, AnalysisMode mode)
         {
             TrustworthinessResult.SecuritySafetyResult = SecuritySafetyDecision.GetSecuritySafetyDecision(fileToAnalyse, mode);
         }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SecuritySafetyModule
+namespace LibraryModule
 {
     public class WinCheckSecResultObject
     {
@@ -19,18 +19,18 @@ namespace SecuritySafetyModule
         public bool DotNet { get; set; }
         public string Path { get; set; }
 
-        public string ToString(int mode)
+        public string ToString(AnalysisMode mode)
         {
             var stringRepresentation = $"Safe compilation settings: {Environment.NewLine}" 
                                         + $"DynamicBase: {DynamicBase}{Environment.NewLine}"
                                         + $"Aslr: {Aslr}{ Environment.NewLine}"
                                         + $"Nx: {Nx}{ Environment.NewLine}"
                                         + $"Seh: {Seh}";
-            if (mode > 0)
+            if (mode != AnalysisMode.Basic)
                 stringRepresentation += $@"{Environment.NewLine}Isolation: {Isolation}{Environment.NewLine}" 
                         + $"Gs: {Gs}{Environment.NewLine}"
                         + $"Cfg: {Cfg}";
-            if (mode == 2)
+            if (mode == AnalysisMode.Advanced)
                 stringRepresentation += $@"{Environment.NewLine}HighEntropyVa: {HighEntropyVa}{Environment.NewLine}"
                     + $"ForceIntegrity: {ForceIntegrity}{Environment.NewLine}"
                     + $"Rfg: {Rfg}{Environment.NewLine}"
