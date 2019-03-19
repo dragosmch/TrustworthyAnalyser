@@ -4,7 +4,7 @@ namespace LibraryModule
 {
     public class AvailabilityResult
     {
-        public int Availability { get; set; }
+        public int AvailabilityScore { get; set; }
         public int AvailabilityNoOfRuns { get; set; }
         public int AvailabilityNoOfSuccessfulRuns { get; set; }
 

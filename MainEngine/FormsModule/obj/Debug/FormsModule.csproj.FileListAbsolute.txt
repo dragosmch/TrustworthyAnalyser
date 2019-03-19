@@ -14,7 +14,7 @@ C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\obj\Debug\FormsModule.csprojAssemblyReference.cache
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\obj\Debug\FormsModule.Form1.resources
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\obj\Debug\FormsModule.UserInterface.resources
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\obj\Debug\FormsModule.Properties.Resources.resources
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\obj\Debug\FormsModule.csproj.GenerateResource.cache
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\FormsModule\obj\Debug\FormsModule.csproj.CoreCompileInputs.cache

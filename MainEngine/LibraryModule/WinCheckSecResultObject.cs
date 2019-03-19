@@ -19,6 +19,11 @@ namespace LibraryModule
         public bool DotNet { get; set; }
         public string Path { get; set; }
 
+        /// <summary>
+        /// String format used for the results report
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <returns>The string representation of the results of WinCheckSec</returns>
         public string ToString(AnalysisMode mode)
         {
             var stringRepresentation = $"Safe compilation settings: {Environment.NewLine}" 

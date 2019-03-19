@@ -10,7 +10,7 @@ namespace AvailabilityModule
     /// <summary>
     /// Class that contains methods to run a given executable for a specified amount of times and also duration
     /// </summary>
-    public static class AvailabilityRunner
+    public class AvailabilityRunner : IAvailabilityRunner
     {
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace AvailabilityModule
         /// <param name="timeout">How long to let the executable run, in milliseconds.</param>
         /// <param name="runExecutablesInParallel">Run the executable multiple times in parallel if true, sequentially otherwise.</param>
         /// <returns>Number of runs that were successful(no errors occured).</returns>
-        public static int RunExecutableMultipleTimes(string fileLocation, int noOfRuns, int timeout, bool runExecutablesInParallel)
+        public int RunExecutableMultipleTimes(string fileLocation, int noOfRuns, int timeout, bool runExecutablesInParallel)
         {
             int resultOfRuns = 0; 
             if (runExecutablesInParallel)
@@ -49,7 +49,7 @@ namespace AvailabilityModule
         /// <param name="fileLocation">Path to file.</param>
         /// <param name="timeout">How long to let the executable run, in milliseconds.</param>
         /// <returns>1 if execution was normal, 0 if exception was caught or stopped running.</returns>
-        private static int RunExecutable(string fileLocation, int timeout)
+        private int RunExecutable(string fileLocation, int timeout)
         {
             var processStartInfo = new ProcessStartInfo
             {
@@ -84,7 +84,7 @@ namespace AvailabilityModule
         /// Kill the processes created for running the executable, recursively.
         /// </summary>
         /// <param name="processId">Id of the process to kill</param>
-        private static void KillProcessAndChildren(int processId)
+        private void KillProcessAndChildren(int processId)
         {
             var cultureInfo = CultureInfo.InvariantCulture;
             var processSearcher = new ManagementObjectSearcher

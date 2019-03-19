@@ -4,13 +4,13 @@ using LibraryModule;
 
 namespace SecuritySafetyModule
 {
-    internal class SecuritySafetyRunner
+    public class SecuritySafetyRunner : ISecuritySafetyRunner
     {
 
         private const string ScriptLocation = @"C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\WinCheckSec\build\Release\winchecksec.exe";
-        private static string _outputResults = "";
+        private string _outputResults = "";
 
-        public static WinCheckSecResultObject GetWinCheckSecResultObject(string fileLocation)
+        public WinCheckSecResultObject GetWinCheckSecResultObject(string fileLocation)
         {
             if (!CallWinCheckSec(fileLocation) || _outputResults.Length == 0) return null;
 
@@ -19,7 +19,7 @@ namespace SecuritySafetyModule
             return resultObject;
         }
 
-        private static bool CallWinCheckSec(string fileLocation)
+        private bool CallWinCheckSec(string fileLocation)
         {
             if (string.IsNullOrEmpty(fileLocation)) return false;
             string fileToAnalyse = "\"" + fileLocation + "\"";
@@ -54,12 +54,12 @@ namespace SecuritySafetyModule
             }
         }
 
-        private static void ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        private void ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
             Console.WriteLine(e);
         }
 
-        private static void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
+        private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             if (_outputResults.Length == 0) _outputResults += e.Data;
         }

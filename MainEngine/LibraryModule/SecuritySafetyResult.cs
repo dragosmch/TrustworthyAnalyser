@@ -4,10 +4,10 @@ namespace LibraryModule
 {
     public class SecuritySafetyResult
     {
-        public int Safety { get; set; }
+        public int SafetyScore { get; set; }
         public int SafetyAndSecurityPercentage { get; set; }
         public int SafetyAndSecurityPercentageBase { get; set; }
-        public int Security { get; set; }
+        public int SecurityScore { get; set; }
         public WinCheckSecResultObject WinCheckSecResultObject { get; set; }
 
         public string ToLongString(AnalysisMode mode)
@@ -16,7 +16,7 @@ namespace LibraryModule
         }
         public override string ToString()
         {
-            return $@"Security and Safety protection score: {SafetyAndSecurityPercentage}/{SafetyAndSecurityPercentageBase}{Environment.NewLine}";
+            return $@"SecurityScore and SafetyScore protection score: {SafetyAndSecurityPercentage}/{SafetyAndSecurityPercentageBase}{Environment.NewLine}";
         }
     }
 }

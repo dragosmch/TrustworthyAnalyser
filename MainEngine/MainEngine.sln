@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsModule", "FormsModule\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryModule", "LibraryModule\LibraryModule.csproj", "{F84A4BB3-D4DB-47E5-B7A6-3FC194C066F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvailabilityModuleTests", "AvailabilityModuleTests\AvailabilityModuleTests.csproj", "{D928FF2C-A81B-465A-9ED8-FD47B58086B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecuritySafetyTests", "SecuritySafetyTests\SecuritySafetyTests.csproj", "{5527DDE4-0BCD-4D68-AFDB-50B9120ECC19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{F84A4BB3-D4DB-47E5-B7A6-3FC194C066F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F84A4BB3-D4DB-47E5-B7A6-3FC194C066F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F84A4BB3-D4DB-47E5-B7A6-3FC194C066F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D928FF2C-A81B-465A-9ED8-FD47B58086B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D928FF2C-A81B-465A-9ED8-FD47B58086B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D928FF2C-A81B-465A-9ED8-FD47B58086B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D928FF2C-A81B-465A-9ED8-FD47B58086B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5527DDE4-0BCD-4D68-AFDB-50B9120ECC19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5527DDE4-0BCD-4D68-AFDB-50B9120ECC19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5527DDE4-0BCD-4D68-AFDB-50B9120ECC19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5527DDE4-0BCD-4D68-AFDB-50B9120ECC19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,12 +6,17 @@ namespace AvailabilityModule
     /// <summary>
     /// Class that decides the outcome of the availability tests
     /// </summary>
-    public static class AvailabilityDecision
+    public class AvailabilityDecision : IAvailabilityDecision
     {
         // Time for how long to let an application run before killing the process
         private const int TimeoutInMilliseconds = 1500;
- 
-        private static int _noOfTimesToRun;
+        private readonly IAvailabilityRunner _availabilityRunner;
+        private int _noOfTimesToRun;
+
+        public AvailabilityDecision(IAvailabilityRunner availabilityRunner)
+        {
+            _availabilityRunner = availabilityRunner;
+        }
 
         /// <summary>
         /// 
@@ -19,12 +24,12 @@ namespace AvailabilityModule
         /// <param name="fileLocation"></param>
         /// <param name="mode"></param>
         /// <returns>An AvailabilityResult object containing detailed information.</returns>
-        public static AvailabilityResult GetAvailabilityDecision(string fileLocation, AnalysisMode mode)
+        public AvailabilityResult GetAvailabilityDecision(string fileLocation, AnalysisMode mode)
         {
             var noOfSuccessfulRuns = GetAvailabilityNoOfSuccessfulRunsResult(fileLocation, mode);
             return new AvailabilityResult
             {
-                Availability = GetAvailabilityResultFromRuns(noOfSuccessfulRuns),
+                AvailabilityScore = GetAvailabilityResultFromRuns(noOfSuccessfulRuns),
                 AvailabilityNoOfRuns = GetAvailabilityNoOfRuns(),
                 AvailabilityNoOfSuccessfulRuns = noOfSuccessfulRuns
             };
@@ -36,7 +41,7 @@ namespace AvailabilityModule
         /// <param name="fileLocation">Path to file.</param>
         /// <param name="mode">Analysis mode.</param>
         /// <returns>An int representing number of executions without errors/exceptions</returns>
-        private static int GetAvailabilityNoOfSuccessfulRunsResult(string fileLocation, AnalysisMode mode)
+        private int GetAvailabilityNoOfSuccessfulRunsResult(string fileLocation, AnalysisMode mode)
         {
             switch (mode)
             {
@@ -53,14 +58,14 @@ namespace AvailabilityModule
                     throw new Exception("Unknown analysis mode!");
             }
 
-            return AvailabilityRunner.RunExecutableMultipleTimes(fileLocation, _noOfTimesToRun, TimeoutInMilliseconds, true);
+            return _availabilityRunner.RunExecutableMultipleTimes(fileLocation, _noOfTimesToRun, TimeoutInMilliseconds, true);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        private static int GetAvailabilityNoOfRuns()
+        private int GetAvailabilityNoOfRuns()
         {
             return _noOfTimesToRun;
         }
@@ -70,7 +75,7 @@ namespace AvailabilityModule
         /// </summary>
         /// <param name="noOfSuccessfulRuns"></param>
         /// <returns></returns>
-        private static int GetAvailabilityResultFromRuns(int noOfSuccessfulRuns)
+        private int GetAvailabilityResultFromRuns(int noOfSuccessfulRuns)
         {
             if (noOfSuccessfulRuns < _noOfTimesToRun / 2 + 1)
                 return -1;

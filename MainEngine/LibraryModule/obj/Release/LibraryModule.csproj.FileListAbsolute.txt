@@ -1,0 +1,6 @@
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\LibraryModule\bin\Release\LibraryModule.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\LibraryModule\bin\Release\LibraryModule.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\LibraryModule\obj\Release\LibraryModule.csprojAssemblyReference.cache
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\LibraryModule\obj\Release\LibraryModule.csproj.CoreCompileInputs.cache
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\LibraryModule\obj\Release\LibraryModule.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\LibraryModule\obj\Release\LibraryModule.pdb

@@ -1,5 +1,9 @@
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\bin\Release\AvailabilityDecision.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\bin\Release\AvailabilityDecision.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\bin\Release\LibraryModule.dll
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\bin\Release\LibraryModule.pdb
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Release\AvailabilityModule.csprojAssemblyReference.cache
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Release\AvailabilityModule.csproj.CoreCompileInputs.cache
+C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Release\AvailabilityModule.csproj.CopyComplete
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Release\AvailabilityDecision.dll
 C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Release\AvailabilityDecision.pdb

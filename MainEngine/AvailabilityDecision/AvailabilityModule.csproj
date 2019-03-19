@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="AvailabilityDecision.cs" />
     <Compile Include="AvailabilityRunner.cs" />
+    <Compile Include="IAvailabilityDecision.cs" />
+    <Compile Include="IAvailabilityRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

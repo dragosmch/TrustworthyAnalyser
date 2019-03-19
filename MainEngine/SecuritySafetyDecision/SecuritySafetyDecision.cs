@@ -4,26 +4,32 @@ using LibraryModule;
 
 namespace SecuritySafetyModule
 {
-    public static class SecuritySafetyDecision
+    public class SecuritySafetyDecision : ISecuritySafetyDecision
     {
-        public static SecuritySafetyResult GetSecuritySafetyDecision(string fileLocation, AnalysisMode mode)
+        private readonly ISecuritySafetyRunner _securitySafetyRunner;
+
+        public SecuritySafetyDecision(ISecuritySafetyRunner securitySafetyRunner)
         {
-            var resultObject = SecuritySafetyRunner.GetWinCheckSecResultObject(fileLocation);
+            _securitySafetyRunner = securitySafetyRunner;
+        }
+
+        public SecuritySafetyResult GetSecuritySafetyDecision(string fileLocation, AnalysisMode mode)
+        {
+            var resultObject = _securitySafetyRunner.GetWinCheckSecResultObject(fileLocation);
             var percentageResult = GetSecuritySafetyPercentage(resultObject, mode);
             // -1, 0 or 1
             int ternaryResult = GetSecuritySafetyResultFromPercentage(percentageResult, mode);
             return new SecuritySafetyResult
             {
-                Safety = ternaryResult,
+                SafetyScore = ternaryResult,
                 SafetyAndSecurityPercentage = percentageResult,
                 SafetyAndSecurityPercentageBase = GetSecuritySafetyMaxPercentage(mode),
-                Security = ternaryResult,
+                SecurityScore = ternaryResult,
                 WinCheckSecResultObject = resultObject
-
             };
         }
 
-        private static int GetSecuritySafetyResultFromPercentage(int percentage, AnalysisMode mode)
+        private int GetSecuritySafetyResultFromPercentage(int percentage, AnalysisMode mode)
         {
             switch (mode)
             {
@@ -44,7 +50,7 @@ namespace SecuritySafetyModule
             }
         }
 
-        private static int GetSecuritySafetyMaxPercentage(AnalysisMode mode)
+        private int GetSecuritySafetyMaxPercentage(AnalysisMode mode)
         {
             switch (mode)
             {
@@ -60,7 +66,7 @@ namespace SecuritySafetyModule
         }
         
 
-        private static int GetSecuritySafetyPercentage(WinCheckSecResultObject resultObject, AnalysisMode mode)
+        private int GetSecuritySafetyPercentage(WinCheckSecResultObject resultObject, AnalysisMode mode)
         {
             if (resultObject == null) return -1;
             int percentage = 0;

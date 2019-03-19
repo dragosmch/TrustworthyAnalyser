@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISecuritySafetyDecision.cs" />
+    <Compile Include="ISecuritySafetyRunner.cs" />
     <Compile Include="SecuritySafetyDecision.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecuritySafetyRunner.cs" />

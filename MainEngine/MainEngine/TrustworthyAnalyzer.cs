@@ -5,12 +5,14 @@ using SecuritySafetyModule;
 
 namespace MainEngine
 {
-    public static class TrustworthyAnalyzer
+    public class TrustworthyAnalyzer
     {
         
-        private static readonly TrustworthinessResult TrustworthinessResult = new TrustworthinessResult();
+        private readonly TrustworthinessResult _trustworthinessResult = new TrustworthinessResult();
+        private readonly IAvailabilityDecision _availabilityDecision = new AvailabilityDecision(new AvailabilityRunner());
+        private readonly ISecuritySafetyDecision _securitySafetyDecision = new SecuritySafetyDecision(new SecuritySafetyRunner());
 
-        public static TrustworthinessResult ReturnResults(string pathToFile, AnalysisMode mode)
+        public TrustworthinessResult ReturnResults(string pathToFile, AnalysisMode mode)
         {
             if (!File.Exists(pathToFile) || !pathToFile.Contains(".exe")) return null;
 
@@ -18,25 +20,29 @@ namespace MainEngine
             GetAvailabilityDecision(fileToAnalyse, mode);
             GetSecuritySafetyDecision(fileToAnalyse, mode);
             int totalResult = 
-                TrustworthinessResult.AvailabilityResult.Availability 
-                    + TrustworthinessResult.SecuritySafetyResult.Safety 
-                    + TrustworthinessResult.SecuritySafetyResult.Security;
-            if (totalResult >= 2)
-                TrustworthinessResult.TrustworthinessLevel = TrustworthyApplicationLevel.Trustworthy;
-            else if (totalResult <= 0)
-                TrustworthinessResult.TrustworthinessLevel = TrustworthyApplicationLevel.NotTrustworthy;
-            else
-                TrustworthinessResult.TrustworthinessLevel = TrustworthyApplicationLevel.Inconclusive;
-            return TrustworthinessResult;
+                _trustworthinessResult.AvailabilityResult.AvailabilityScore 
+                    + _trustworthinessResult.SecuritySafetyResult.SafetyScore 
+                    + _trustworthinessResult.SecuritySafetyResult.SecurityScore;
+            _trustworthinessResult.TrustworthinessLevel = GetApplicationLevelFromScore(totalResult);
+            return _trustworthinessResult;
         }
 
-        private static void GetAvailabilityDecision(string fileToAnalyse, AnalysisMode mode)
+        private TrustworthyApplicationLevel GetApplicationLevelFromScore(int score)
         {
-            TrustworthinessResult.AvailabilityResult = AvailabilityDecision.GetAvailabilityDecision(fileToAnalyse, mode);
+            if (score >= 2)
+                return TrustworthyApplicationLevel.Trustworthy;
+            if (score <= 0)
+                return TrustworthyApplicationLevel.NotTrustworthy;
+            return TrustworthyApplicationLevel.Inconclusive;
         }
-        private static void GetSecuritySafetyDecision(string fileToAnalyse, AnalysisMode mode)
+
+        private void GetAvailabilityDecision(string fileToAnalyse, AnalysisMode mode)
         {
-            TrustworthinessResult.SecuritySafetyResult = SecuritySafetyDecision.GetSecuritySafetyDecision(fileToAnalyse, mode);
+            _trustworthinessResult.AvailabilityResult = _availabilityDecision.GetAvailabilityDecision(fileToAnalyse, mode);
+        }
+        private void GetSecuritySafetyDecision(string fileToAnalyse, AnalysisMode mode)
+        {
+            _trustworthinessResult.SecuritySafetyResult = _securitySafetyDecision.GetSecuritySafetyDecision(fileToAnalyse, mode);
         }
     }
 }
