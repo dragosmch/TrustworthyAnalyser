@@ -1,7 +1,0 @@
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryThreeOutOfFour\bin\Debug\AppThatFailsEveryThreeOutOfFour.exe.config
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryThreeOutOfFour\bin\Debug\AppThatFailsEveryThreeOutOfFour.exe
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryThreeOutOfFour\bin\Debug\AppThatFailsEveryThreeOutOfFour.pdb
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryThreeOutOfFour\obj\Debug\AppThatFailsEveryThreeOutOfFour.csprojAssemblyReference.cache
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryThreeOutOfFour\obj\Debug\AppThatFailsEveryThreeOutOfFour.csproj.CoreCompileInputs.cache
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryThreeOutOfFour\obj\Debug\AppThatFailsEveryThreeOutOfFour.exe
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryThreeOutOfFour\obj\Debug\AppThatFailsEveryThreeOutOfFour.pdb

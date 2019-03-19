@@ -1,7 +1,0 @@
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryTenthTime\bin\Release\AppThatFailsEveryTenthTime.exe.config
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryTenthTime\bin\Release\AppThatFailsEveryTenthTime.exe
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryTenthTime\bin\Release\AppThatFailsEveryTenthTime.pdb
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryTenthTime\obj\Release\AppThatFailsEveryTenthTime.csprojAssemblyReference.cache
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryTenthTime\obj\Release\AppThatFailsEveryTenthTime.csproj.CoreCompileInputs.cache
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryTenthTime\obj\Release\AppThatFailsEveryTenthTime.exe
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppThatFailsEveryTenthTime\obj\Release\AppThatFailsEveryTenthTime.pdb

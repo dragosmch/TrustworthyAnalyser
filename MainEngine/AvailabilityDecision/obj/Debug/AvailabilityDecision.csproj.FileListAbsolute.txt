@@ -1,5 +1,0 @@
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\bin\Debug\AvailabilityDecision.dll
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\bin\Debug\AvailabilityDecision.pdb
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Debug\AvailabilityDecision.csproj.CoreCompileInputs.cache
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Debug\AvailabilityDecision.dll
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\MainEngine\AvailabilityDecision\obj\Debug\AvailabilityDecision.pdb

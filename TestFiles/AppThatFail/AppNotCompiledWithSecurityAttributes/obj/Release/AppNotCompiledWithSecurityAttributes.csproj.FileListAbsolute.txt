@@ -1,6 +1,0 @@
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppNotCompiledWithSecurityAttributes\bin\Release\AppNotCompiledWithSecurityAttributes.exe.config
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppNotCompiledWithSecurityAttributes\bin\Release\AppNotCompiledWithSecurityAttributes.exe
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppNotCompiledWithSecurityAttributes\bin\Release\AppNotCompiledWithSecurityAttributes.pdb
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppNotCompiledWithSecurityAttributes\obj\Release\AppNotCompiledWithSecurityAttributes.csproj.CoreCompileInputs.cache
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppNotCompiledWithSecurityAttributes\obj\Release\AppNotCompiledWithSecurityAttributes.exe
-C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\AppThatFail\AppNotCompiledWithSecurityAttributes\obj\Release\AppNotCompiledWithSecurityAttributes.pdb
