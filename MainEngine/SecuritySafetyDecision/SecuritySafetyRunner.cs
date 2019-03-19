@@ -54,7 +54,7 @@ namespace SecuritySafetyModule
             }
         }
 
-        private void ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        private static void ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
             Console.WriteLine(e);
         }

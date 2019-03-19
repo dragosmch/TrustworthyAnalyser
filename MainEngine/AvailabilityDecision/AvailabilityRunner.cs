@@ -49,7 +49,7 @@ namespace AvailabilityModule
         /// <param name="fileLocation">Path to file.</param>
         /// <param name="timeout">How long to let the executable run, in milliseconds.</param>
         /// <returns>1 if execution was normal, 0 if exception was caught or stopped running.</returns>
-        private int RunExecutable(string fileLocation, int timeout)
+        private static int RunExecutable(string fileLocation, int timeout)
         {
             var processStartInfo = new ProcessStartInfo
             {
@@ -84,7 +84,7 @@ namespace AvailabilityModule
         /// Kill the processes created for running the executable, recursively.
         /// </summary>
         /// <param name="processId">Id of the process to kill</param>
-        private void KillProcessAndChildren(int processId)
+        private static void KillProcessAndChildren(int processId)
         {
             var cultureInfo = CultureInfo.InvariantCulture;
             var processSearcher = new ManagementObjectSearcher

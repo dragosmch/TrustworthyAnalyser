@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using AvailabilityModule;
 using LibraryModule;
 using SecuritySafetyModule;
@@ -27,7 +28,7 @@ namespace MainEngine
             return _trustworthinessResult;
         }
 
-        private TrustworthyApplicationLevel GetApplicationLevelFromScore(int score)
+        private static TrustworthyApplicationLevel GetApplicationLevelFromScore(int score)
         {
             if (score >= 2)
                 return TrustworthyApplicationLevel.Trustworthy;

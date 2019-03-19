@@ -16,7 +16,7 @@ namespace LibraryModule
         }
         public override string ToString()
         {
-            return $@"SecurityScore and SafetyScore protection score: {SafetyAndSecurityPercentage}/{SafetyAndSecurityPercentageBase}{Environment.NewLine}";
+            return $@"Security and Safety protection score: {SafetyAndSecurityPercentage}/{SafetyAndSecurityPercentageBase}{Environment.NewLine}";
         }
     }
 }

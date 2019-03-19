@@ -55,7 +55,7 @@ namespace AvailabilityModule
                     _noOfTimesToRun = 10;
                     break;                
                 default:
-                    throw new Exception("Unknown analysis mode!");
+                    throw new ArgumentException("Unknown analysis mode!");
             }
 
             return _availabilityRunner.RunExecutableMultipleTimes(fileLocation, _noOfTimesToRun, TimeoutInMilliseconds, true);

@@ -83,7 +83,7 @@ namespace FormsModule
                     ColourTextBoxAndWriteText("Inconclusive result", Color.Yellow);
                     break;
                 default:
-                    throw new Exception("Unknown trustworthiness level!");
+                    throw new ArgumentException("Unknown trustworthiness level!");
             }
         }
 

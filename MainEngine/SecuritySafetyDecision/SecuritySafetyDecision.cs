@@ -17,6 +17,7 @@ namespace SecuritySafetyModule
         {
             var resultObject = _securitySafetyRunner.GetWinCheckSecResultObject(fileLocation);
             var percentageResult = GetSecuritySafetyPercentage(resultObject, mode);
+
             // -1, 0 or 1
             int ternaryResult = GetSecuritySafetyResultFromPercentage(percentageResult, mode);
             return new SecuritySafetyResult
@@ -29,7 +30,7 @@ namespace SecuritySafetyModule
             };
         }
 
-        private int GetSecuritySafetyResultFromPercentage(int percentage, AnalysisMode mode)
+        private static int GetSecuritySafetyResultFromPercentage(int percentage, AnalysisMode mode)
         {
             switch (mode)
             {
@@ -46,11 +47,11 @@ namespace SecuritySafetyModule
                     if (percentage >= 70) return 0;
                     return -1;
                 default:
-                    throw new Exception("Unknown analysis mode!");
+                    throw new ArgumentException("Unknown analysis mode!");
             }
         }
 
-        private int GetSecuritySafetyMaxPercentage(AnalysisMode mode)
+        private static int GetSecuritySafetyMaxPercentage(AnalysisMode mode)
         {
             switch (mode)
             {
@@ -61,12 +62,12 @@ namespace SecuritySafetyModule
                 case AnalysisMode.Advanced:
                     return 100;
                 default:
-                    throw new Exception("Unknown analysis mode!");
+                    throw new ArgumentException("Unknown analysis mode!");
             }
         }
         
 
-        private int GetSecuritySafetyPercentage(WinCheckSecResultObject resultObject, AnalysisMode mode)
+        private static int GetSecuritySafetyPercentage(WinCheckSecResultObject resultObject, AnalysisMode mode)
         {
             if (resultObject == null) return -1;
             int percentage = 0;
