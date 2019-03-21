@@ -49,6 +49,7 @@
             this.openButton = new System.Windows.Forms.Button();
             this.availabilityExplanation = new System.Windows.Forms.ToolTip(this.components);
             this.securitySafetyExplanation = new System.Windows.Forms.ToolTip(this.components);
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -72,6 +73,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.CausesValidation = false;
+            this.splitContainer1.Panel2.Controls.Add(this.progressBar);
             this.splitContainer1.Panel2.Controls.Add(this.saveReportButton);
             this.splitContainer1.Panel2.Controls.Add(this.securitySafetyResultLabel);
             this.splitContainer1.Panel2.Controls.Add(this.availabilityResultLabel);
@@ -247,6 +249,13 @@
             this.openButton.UseVisualStyleBackColor = true;
             this.openButton.Click += new System.EventHandler(this.OpenButton_Click);
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(308, 88);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(100, 23);
+            this.progressBar.TabIndex = 9;
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +299,7 @@
         private System.Windows.Forms.Label modeLabel;
         private System.Windows.Forms.ToolTip availabilityExplanation;
         private System.Windows.Forms.ToolTip securitySafetyExplanation;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

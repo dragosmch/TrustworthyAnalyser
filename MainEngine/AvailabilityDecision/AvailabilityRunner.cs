@@ -21,15 +21,17 @@ namespace AvailabilityModule
         /// <param name="timeout">How long to let the executable run, in milliseconds.</param>
         /// <param name="runExecutablesInParallel">Run the executable multiple times in parallel if true, sequentially otherwise.</param>
         /// <returns>Number of runs that were successful(no errors occured).</returns>
-        public int RunExecutableMultipleTimes(string fileLocation, int noOfRuns, int timeout, bool runExecutablesInParallel)
+        public int RunExecutableMultipleTimes(IProgress<int> progress, string fileLocation, int noOfRuns, int timeout, bool runExecutablesInParallel)
         {
             int resultOfRuns = 0; 
             if (runExecutablesInParallel)
             {
                 Parallel.For(0, noOfRuns, actionBody =>
                     {
+                        progress.Report(1);
                         int resultOfThisRun = RunExecutable(fileLocation, timeout);
                         Interlocked.Add(ref resultOfRuns, resultOfThisRun);
+                        progress.Report(1);
                     });
             }
             else
@@ -37,6 +39,7 @@ namespace AvailabilityModule
                 for (int i = 0; i < noOfRuns; i++)
                 {
                     resultOfRuns += RunExecutable(fileLocation, timeout);
+                    progress.Report(1);
                 }
             }
             return resultOfRuns;

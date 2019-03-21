@@ -13,9 +13,11 @@ namespace SecuritySafetyModule
             _securitySafetyRunner = securitySafetyRunner;
         }
 
-        public SecuritySafetyResult GetSecuritySafetyDecision(string fileLocation, AnalysisMode mode)
+        public SecuritySafetyResult GetSecuritySafetyDecision(IProgress<int> progress, string fileLocation, AnalysisMode mode)
         {
+            progress.Report(1);
             var resultObject = _securitySafetyRunner.GetWinCheckSecResultObject(fileLocation);
+            progress.Report(1);
             var percentageResult = GetSecuritySafetyPercentage(resultObject, mode);
 
             // -1, 0 or 1
@@ -66,7 +68,6 @@ namespace SecuritySafetyModule
             }
         }
         
-
         private static int GetSecuritySafetyPercentage(WinCheckSecResultObject resultObject, AnalysisMode mode)
         {
             if (resultObject == null) return -1;

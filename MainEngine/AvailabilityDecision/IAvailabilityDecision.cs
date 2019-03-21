@@ -1,9 +1,10 @@
-﻿using LibraryModule;
+﻿using System;
+using LibraryModule;
 
 namespace AvailabilityModule
 {
     public interface IAvailabilityDecision
     {
-        AvailabilityResult GetAvailabilityDecision(string fileLocation, AnalysisMode mode);
+        AvailabilityResult GetAvailabilityDecision(IProgress<int> progress, string fileLocation, AnalysisMode mode);
     }
 }

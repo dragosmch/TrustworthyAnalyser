@@ -28,7 +28,7 @@ namespace AvailabilityModuleTests
 
             // Act
             var availabilityResult = _availabilityDecision
-                .GetAvailabilityDecision(It.IsAny<string>(), It.IsAny<AnalysisMode>());
+                .GetAvailabilityDecision(TODO, It.IsAny<string>(), It.IsAny<AnalysisMode>());
 
             // Assert
             Assert.IsNotNull(availabilityResult);
@@ -44,7 +44,7 @@ namespace AvailabilityModuleTests
 
             // Act
             int resultAvailabilityScore = _availabilityDecision
-                .GetAvailabilityDecision(It.IsAny<string>(), It.IsAny<AnalysisMode>()).AvailabilityScore;
+                .GetAvailabilityDecision(TODO, It.IsAny<string>(), It.IsAny<AnalysisMode>()).AvailabilityScore;
 
             // Assert
             Assert.IsTrue(resultAvailabilityScore >= -1);
@@ -63,7 +63,7 @@ namespace AvailabilityModuleTests
 
             // Act
             int resultNoOfSuccessfulRuns = _availabilityDecision
-                .GetAvailabilityDecision(It.IsAny<string>(), It.IsAny<AnalysisMode>()).AvailabilityNoOfSuccessfulRuns;
+                .GetAvailabilityDecision(TODO, It.IsAny<string>(), It.IsAny<AnalysisMode>()).AvailabilityNoOfSuccessfulRuns;
 
             // Assert
             Assert.AreEqual(five, resultNoOfSuccessfulRuns);
@@ -78,7 +78,7 @@ namespace AvailabilityModuleTests
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
             // Act
             int resultNoOfRuns = _availabilityDecision
-                .GetAvailabilityDecision(It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfRuns;
+                .GetAvailabilityDecision(TODO, It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfRuns;
 
             // Assert
             Assert.IsTrue(resultNoOfRuns > 0);
@@ -93,7 +93,7 @@ namespace AvailabilityModuleTests
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
             // Act
             int resultNoOfSuccessfulRuns = _availabilityDecision
-                .GetAvailabilityDecision(It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfSuccessfulRuns;
+                .GetAvailabilityDecision(TODO, It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfSuccessfulRuns;
 
             // Assert
             Assert.IsTrue(resultNoOfSuccessfulRuns > -1);
@@ -108,7 +108,7 @@ namespace AvailabilityModuleTests
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
             // Act
             int resultNoOfRuns = _availabilityDecision
-                .GetAvailabilityDecision(It.IsAny<string>(), AnalysisMode.Basic).AvailabilityNoOfRuns;
+                .GetAvailabilityDecision(TODO, It.IsAny<string>(), AnalysisMode.Basic).AvailabilityNoOfRuns;
 
             // Assert
             Assert.AreEqual(3, resultNoOfRuns);
@@ -123,7 +123,7 @@ namespace AvailabilityModuleTests
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
             // Act
             int resultNoOfRuns = _availabilityDecision
-                .GetAvailabilityDecision(It.IsAny<string>(), AnalysisMode.Medium).AvailabilityNoOfRuns;
+                .GetAvailabilityDecision(TODO, It.IsAny<string>(), AnalysisMode.Medium).AvailabilityNoOfRuns;
 
             // Assert
             Assert.AreEqual(5, resultNoOfRuns);
@@ -138,7 +138,7 @@ namespace AvailabilityModuleTests
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
             // Act
             int resultNoOfRuns = _availabilityDecision
-                .GetAvailabilityDecision(It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfRuns;
+                .GetAvailabilityDecision(TODO, It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfRuns;
 
             // Assert
             Assert.AreEqual(10, resultNoOfRuns);

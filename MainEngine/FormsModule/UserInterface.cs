@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryModule;
 using MainEngine;
@@ -33,8 +34,9 @@ namespace FormsModule
             }
         }
 
-        private void AnalyseButton_Click(object sender, EventArgs e)
+        private async void AnalyseButton_Click(object sender, EventArgs e)
         {
+            progressBar.Value = 0;
             // Remove stop watch before submission
             var sw = new Stopwatch();
             sw.Start();
@@ -42,8 +44,12 @@ namespace FormsModule
             string fileLocation = fileLocationBox.Text;
             if (!string.IsNullOrEmpty(fileLocation))
             {
+                var mode = GetModeFromModeButtons();
+                var progress = InitialiseProgressBar(mode);
+
                 analyseButton.Enabled = false;
-                _trustworthyResult = _trustworthyAnalyzer.ReturnResults(fileLocation, GetModeFromModeButtons());
+                await Task.Run(() => 
+                    _trustworthyResult = _trustworthyAnalyzer.ReturnResults(progress, fileLocation, mode)).ConfigureAwait(true);
                 if (_trustworthyResult == null)
                 {
                     ShowFailureMessage("Please select an executable file.", "Cannot analyse this file");
@@ -55,6 +61,41 @@ namespace FormsModule
             analyseButton.Enabled = true;
             saveReportButton.Visible = true;
             Console.WriteLine(sw.ElapsedMilliseconds);
+        }
+
+        private IProgress<int> InitialiseProgressBar(AnalysisMode mode)
+        {
+            progressBar.Maximum = GetMaximumProgressBarValueFromMode(mode);
+            progressBar.Step = 1;
+
+            var progress = new Progress<int>(incrementValue =>
+            {
+                if (progressBar.Value <= progressBar.Maximum - 2)
+                {
+                    progressBar.Value += incrementValue + 1;
+                    progressBar.Value--;
+                }
+                else if (progressBar.Value <= progressBar.Maximum)
+                {
+                    progressBar.Maximum--;
+                }
+            });
+            return progress;
+        }
+
+        private static int GetMaximumProgressBarValueFromMode(AnalysisMode mode)
+        {
+            switch (mode)
+            {
+                case AnalysisMode.Basic:
+                    return 8;
+                case AnalysisMode.Medium:
+                    return 12;
+                case AnalysisMode.Advanced:
+                    return 22;
+                default:
+                    throw new ArgumentException("Invalid analysis mode!");
+            }
         }
 
         private static void ShowFailureMessage(string bodyText, string title)

@@ -13,13 +13,13 @@ namespace MainEngine
         private readonly IAvailabilityDecision _availabilityDecision = new AvailabilityDecision(new AvailabilityRunner());
         private readonly ISecuritySafetyDecision _securitySafetyDecision = new SecuritySafetyDecision(new SecuritySafetyRunner());
 
-        public TrustworthinessResult ReturnResults(string pathToFile, AnalysisMode mode)
+        public TrustworthinessResult ReturnResults(IProgress<int> progress, string pathToFile, AnalysisMode mode)
         {
             if (!File.Exists(pathToFile) || !pathToFile.Contains(".exe")) return null;
 
             string fileToAnalyse = pathToFile;
-            GetAvailabilityDecision(fileToAnalyse, mode);
-            GetSecuritySafetyDecision(fileToAnalyse, mode);
+            GetAvailabilityDecision(progress, fileToAnalyse, mode);
+            GetSecuritySafetyDecision(progress, fileToAnalyse, mode);
             int totalResult = 
                 _trustworthinessResult.AvailabilityResult.AvailabilityScore 
                     + _trustworthinessResult.SecuritySafetyResult.SafetyScore 
@@ -37,13 +37,13 @@ namespace MainEngine
             return TrustworthyApplicationLevel.Inconclusive;
         }
 
-        private void GetAvailabilityDecision(string fileToAnalyse, AnalysisMode mode)
+        private void GetAvailabilityDecision(IProgress<int> progress, string fileToAnalyse, AnalysisMode mode)
         {
-            _trustworthinessResult.AvailabilityResult = _availabilityDecision.GetAvailabilityDecision(fileToAnalyse, mode);
+            _trustworthinessResult.AvailabilityResult = _availabilityDecision.GetAvailabilityDecision(progress, fileToAnalyse, mode);
         }
-        private void GetSecuritySafetyDecision(string fileToAnalyse, AnalysisMode mode)
+        private void GetSecuritySafetyDecision(IProgress<int> progress, string fileToAnalyse, AnalysisMode mode)
         {
-            _trustworthinessResult.SecuritySafetyResult = _securitySafetyDecision.GetSecuritySafetyDecision(fileToAnalyse, mode);
+            _trustworthinessResult.SecuritySafetyResult = _securitySafetyDecision.GetSecuritySafetyDecision(progress, fileToAnalyse, mode);
         }
     }
 }

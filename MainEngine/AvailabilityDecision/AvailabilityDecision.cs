@@ -21,12 +21,13 @@ namespace AvailabilityModule
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="progress"></param>
         /// <param name="fileLocation"></param>
         /// <param name="mode"></param>
         /// <returns>An AvailabilityResult object containing detailed information.</returns>
-        public AvailabilityResult GetAvailabilityDecision(string fileLocation, AnalysisMode mode)
+        public AvailabilityResult GetAvailabilityDecision(IProgress<int> progress, string fileLocation, AnalysisMode mode)
         {
-            var noOfSuccessfulRuns = GetAvailabilityNoOfSuccessfulRunsResult(fileLocation, mode);
+            var noOfSuccessfulRuns = GetAvailabilityNoOfSuccessfulRunsResult(progress, fileLocation, mode);
             return new AvailabilityResult
             {
                 AvailabilityScore = GetAvailabilityResultFromRuns(noOfSuccessfulRuns),
@@ -38,10 +39,11 @@ namespace AvailabilityModule
         /// <summary>
         ///  Method to test the availability of an application
         /// </summary>
+        /// <param name="progress"></param>
         /// <param name="fileLocation">Path to file.</param>
         /// <param name="mode">Analysis mode.</param>
         /// <returns>An int representing number of executions without errors/exceptions</returns>
-        private int GetAvailabilityNoOfSuccessfulRunsResult(string fileLocation, AnalysisMode mode)
+        private int GetAvailabilityNoOfSuccessfulRunsResult(IProgress<int> progress, string fileLocation, AnalysisMode mode)
         {
             switch (mode)
             {
@@ -58,7 +60,7 @@ namespace AvailabilityModule
                     throw new ArgumentException("Unknown analysis mode!");
             }
 
-            return _availabilityRunner.RunExecutableMultipleTimes(fileLocation, _noOfTimesToRun, TimeoutInMilliseconds, true);
+            return _availabilityRunner.RunExecutableMultipleTimes(progress, fileLocation, _noOfTimesToRun, TimeoutInMilliseconds, true);
         }
 
         /// <summary>
