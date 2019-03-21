@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalysisModeMapping.cs" />
     <Compile Include="TrustworthyApplicationLevel.cs" />
     <Compile Include="AnalysisMode.cs" />
     <Compile Include="AvailabilityResult.cs" />

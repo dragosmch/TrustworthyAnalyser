@@ -2,6 +2,9 @@
 
 namespace LibraryModule
 {
+    /// <summary>
+    /// Overall result of analysis
+    /// </summary>
     public class TrustworthinessResult
     {
         public TrustworthyApplicationLevel TrustworthinessLevel { get; set; }

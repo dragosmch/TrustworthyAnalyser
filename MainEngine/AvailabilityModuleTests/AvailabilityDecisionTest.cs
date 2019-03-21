@@ -1,4 +1,5 @@
-﻿using AvailabilityModule;
+﻿using System;
+using AvailabilityModule;
 using LibraryModule;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -23,12 +24,12 @@ namespace AvailabilityModuleTests
         {
             // Arrange
             _availabilityRunnerMock.Setup(runner =>
-                runner.RunExecutableMultipleTimes(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
+                runner.RunExecutableMultipleTimes(It.IsAny<IProgress<int>>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
 
             // Act
             var availabilityResult = _availabilityDecision
-                .GetAvailabilityDecision(TODO, It.IsAny<string>(), It.IsAny<AnalysisMode>());
+                .GetAvailabilityDecision(It.IsAny<IProgress<int>>(), It.IsAny<string>(), It.IsAny<AnalysisMode>());
 
             // Assert
             Assert.IsNotNull(availabilityResult);
@@ -39,12 +40,12 @@ namespace AvailabilityModuleTests
         {
             // Arrange
             _availabilityRunnerMock.Setup(runner =>
-                runner.RunExecutableMultipleTimes(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
+                runner.RunExecutableMultipleTimes(It.IsAny<IProgress<int>>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
 
             // Act
             int resultAvailabilityScore = _availabilityDecision
-                .GetAvailabilityDecision(TODO, It.IsAny<string>(), It.IsAny<AnalysisMode>()).AvailabilityScore;
+                .GetAvailabilityDecision(It.IsAny<IProgress<int>>(), It.IsAny<string>(), It.IsAny<AnalysisMode>()).AvailabilityScore;
 
             // Assert
             Assert.IsTrue(resultAvailabilityScore >= -1);
@@ -58,12 +59,12 @@ namespace AvailabilityModuleTests
             // Arrange
             int five = 5;
             _availabilityRunnerMock.Setup(runner =>
-                runner.RunExecutableMultipleTimes(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
+                runner.RunExecutableMultipleTimes(It.IsAny<IProgress<int>>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
                     It.IsAny<bool>())).Returns(five);
 
             // Act
             int resultNoOfSuccessfulRuns = _availabilityDecision
-                .GetAvailabilityDecision(TODO, It.IsAny<string>(), It.IsAny<AnalysisMode>()).AvailabilityNoOfSuccessfulRuns;
+                .GetAvailabilityDecision(It.IsAny<IProgress<int>>(), It.IsAny<string>(), It.IsAny<AnalysisMode>()).AvailabilityNoOfSuccessfulRuns;
 
             // Assert
             Assert.AreEqual(five, resultNoOfSuccessfulRuns);
@@ -74,11 +75,11 @@ namespace AvailabilityModuleTests
         {
             // Arrange
             _availabilityRunnerMock.Setup(runner =>
-                runner.RunExecutableMultipleTimes(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
+                runner.RunExecutableMultipleTimes(It.IsAny<IProgress<int>>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
             // Act
             int resultNoOfRuns = _availabilityDecision
-                .GetAvailabilityDecision(TODO, It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfRuns;
+                .GetAvailabilityDecision(It.IsAny<IProgress<int>>(), It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfRuns;
 
             // Assert
             Assert.IsTrue(resultNoOfRuns > 0);
@@ -89,11 +90,11 @@ namespace AvailabilityModuleTests
         {
             // Arrange
             _availabilityRunnerMock.Setup(runner =>
-                runner.RunExecutableMultipleTimes(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
+                runner.RunExecutableMultipleTimes(It.IsAny<IProgress<int>>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
             // Act
             int resultNoOfSuccessfulRuns = _availabilityDecision
-                .GetAvailabilityDecision(TODO, It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfSuccessfulRuns;
+                .GetAvailabilityDecision(It.IsAny<IProgress<int>>(), It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfSuccessfulRuns;
 
             // Assert
             Assert.IsTrue(resultNoOfSuccessfulRuns > -1);
@@ -104,11 +105,11 @@ namespace AvailabilityModuleTests
         {
             // Arrange
             _availabilityRunnerMock.Setup(runner =>
-                runner.RunExecutableMultipleTimes(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
+                runner.RunExecutableMultipleTimes(It.IsAny<IProgress<int>>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
             // Act
             int resultNoOfRuns = _availabilityDecision
-                .GetAvailabilityDecision(TODO, It.IsAny<string>(), AnalysisMode.Basic).AvailabilityNoOfRuns;
+                .GetAvailabilityDecision(It.IsAny<IProgress<int>>(), It.IsAny<string>(), AnalysisMode.Basic).AvailabilityNoOfRuns;
 
             // Assert
             Assert.AreEqual(3, resultNoOfRuns);
@@ -119,11 +120,11 @@ namespace AvailabilityModuleTests
         {
             // Arrange
             _availabilityRunnerMock.Setup(runner =>
-                runner.RunExecutableMultipleTimes(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
+                runner.RunExecutableMultipleTimes(It.IsAny<IProgress<int>>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
             // Act
             int resultNoOfRuns = _availabilityDecision
-                .GetAvailabilityDecision(TODO, It.IsAny<string>(), AnalysisMode.Medium).AvailabilityNoOfRuns;
+                .GetAvailabilityDecision(It.IsAny<IProgress<int>>(), It.IsAny<string>(), AnalysisMode.Medium).AvailabilityNoOfRuns;
 
             // Assert
             Assert.AreEqual(5, resultNoOfRuns);
@@ -134,11 +135,11 @@ namespace AvailabilityModuleTests
         {
             // Arrange
             _availabilityRunnerMock.Setup(runner =>
-                runner.RunExecutableMultipleTimes(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
+                runner.RunExecutableMultipleTimes(It.IsAny<IProgress<int>>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(),
                     It.IsAny<bool>())).Returns(It.IsAny<int>());
             // Act
             int resultNoOfRuns = _availabilityDecision
-                .GetAvailabilityDecision(TODO, It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfRuns;
+                .GetAvailabilityDecision(It.IsAny<IProgress<int>>(), It.IsAny<string>(), AnalysisMode.Advanced).AvailabilityNoOfRuns;
 
             // Assert
             Assert.AreEqual(10, resultNoOfRuns);

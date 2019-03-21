@@ -2,6 +2,9 @@
 
 namespace LibraryModule
 {
+    /// <summary>
+    /// Results of the availability checks
+    /// </summary>
     public class AvailabilityResult
     {
         public int AvailabilityScore { get; set; }

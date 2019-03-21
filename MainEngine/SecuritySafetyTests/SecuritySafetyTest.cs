@@ -11,12 +11,14 @@ namespace SecuritySafetyTests
     {
         private Mock<ISecuritySafetyRunner> _securitySafetyRunnerMock;
         private SecuritySafetyDecision _securitySafetyDecision;
+        private IProgress<int> _progress;
 
         [TestInitialize]
         public void TestSetUp()
         {
             _securitySafetyRunnerMock = new Mock<ISecuritySafetyRunner>();
             _securitySafetyDecision = new SecuritySafetyDecision(_securitySafetyRunnerMock.Object);
+            _progress = new Progress<int>();
         }
 
         [TestMethod]
@@ -28,7 +30,7 @@ namespace SecuritySafetyTests
 
             // Act
             var securitySafetyResult = 
-                _securitySafetyDecision.GetSecuritySafetyDecision(It.IsAny<string>(), It.IsAny<AnalysisMode>());
+                _securitySafetyDecision.GetSecuritySafetyDecision(_progress, It.IsAny<string>(), It.IsAny<AnalysisMode>());
 
             // Assert
             Assert.IsNotNull(securitySafetyResult);
@@ -43,7 +45,7 @@ namespace SecuritySafetyTests
 
             // Act
             var safetySecurityPercentage =
-                _securitySafetyDecision.GetSecuritySafetyDecision(It.IsAny<string>(), It.IsAny<AnalysisMode>())
+                _securitySafetyDecision.GetSecuritySafetyDecision(_progress, It.IsAny<string>(), It.IsAny<AnalysisMode>())
                     .SafetyAndSecurityPercentage;
 
             // Assert
@@ -58,12 +60,12 @@ namespace SecuritySafetyTests
                 .Returns((WinCheckSecResultObject)null);
 
             // Act
-            var safetySecurityPercentangeBase =
-                _securitySafetyDecision.GetSecuritySafetyDecision(It.IsAny<string>(), AnalysisMode.Basic)
+            var safetySecurityPercentageBase =
+                _securitySafetyDecision.GetSecuritySafetyDecision(_progress, It.IsAny<string>(), AnalysisMode.Basic)
                     .SafetyAndSecurityPercentageBase;
 
             // Assert
-            Assert.AreEqual(80, safetySecurityPercentangeBase);
+            Assert.AreEqual(80, safetySecurityPercentageBase);
         }
 
         [TestMethod]
@@ -74,12 +76,12 @@ namespace SecuritySafetyTests
                 .Returns((WinCheckSecResultObject)null);
 
             // Act
-            var safetySecurityPercentangeBase =
-                _securitySafetyDecision.GetSecuritySafetyDecision(It.IsAny<string>(), AnalysisMode.Medium)
+            var safetySecurityPercentageBase =
+                _securitySafetyDecision.GetSecuritySafetyDecision(_progress, It.IsAny<string>(), AnalysisMode.Medium)
                     .SafetyAndSecurityPercentageBase;
 
             // Assert
-            Assert.AreEqual(92, safetySecurityPercentangeBase);
+            Assert.AreEqual(92, safetySecurityPercentageBase);
         }
 
         [TestMethod]
@@ -90,12 +92,12 @@ namespace SecuritySafetyTests
                 .Returns((WinCheckSecResultObject)null);
 
             // Act
-            var safetySecurityPercentangeBase =
-                _securitySafetyDecision.GetSecuritySafetyDecision(It.IsAny<string>(), AnalysisMode.Advanced)
+            var safetySecurityPercentageBase =
+                _securitySafetyDecision.GetSecuritySafetyDecision(_progress, It.IsAny<string>(), AnalysisMode.Advanced)
                     .SafetyAndSecurityPercentageBase;
 
             // Assert
-            Assert.AreEqual(100, safetySecurityPercentangeBase);
+            Assert.AreEqual(100, safetySecurityPercentageBase);
         }
 
         [TestMethod]
@@ -108,7 +110,7 @@ namespace SecuritySafetyTests
 
             // Act
             var securitySafetyResult =
-                _securitySafetyDecision.GetSecuritySafetyDecision(It.IsAny<string>(), It.IsAny<AnalysisMode>()).WinCheckSecResultObject;
+                _securitySafetyDecision.GetSecuritySafetyDecision(_progress, It.IsAny<string>(), It.IsAny<AnalysisMode>()).WinCheckSecResultObject;
 
             // Assert
             Assert.AreSame(winCheckSecObject, securitySafetyResult);

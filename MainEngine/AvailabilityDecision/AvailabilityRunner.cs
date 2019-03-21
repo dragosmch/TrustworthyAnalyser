@@ -12,15 +12,7 @@ namespace AvailabilityModule
     /// </summary>
     public class AvailabilityRunner : IAvailabilityRunner
     {
-
-        /// <summary>
-        ///  Run an executable file multiple times.
-        /// </summary>
-        /// <param name="fileLocation">Path to file.</param>
-        /// <param name="noOfRuns">How many times to run the executable.</param>
-        /// <param name="timeout">How long to let the executable run, in milliseconds.</param>
-        /// <param name="runExecutablesInParallel">Run the executable multiple times in parallel if true, sequentially otherwise.</param>
-        /// <returns>Number of runs that were successful(no errors occured).</returns>
+        /// <inheritdoc />
         public int RunExecutableMultipleTimes(IProgress<int> progress, string fileLocation, int noOfRuns, int timeout, bool runExecutablesInParallel)
         {
             int resultOfRuns = 0; 

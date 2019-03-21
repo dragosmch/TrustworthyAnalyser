@@ -4,34 +4,32 @@ using LibraryModule;
 namespace AvailabilityModule
 {
     /// <summary>
-    /// Class that decides the outcome of the availability tests
+    /// Class that decides the outcome of the availability tests.
     /// </summary>
     public class AvailabilityDecision : IAvailabilityDecision
     {
-        // Time for how long to let an application run before killing the process
+        // Time for how long to let an application run before killing the process.
         private const int TimeoutInMilliseconds = 1500;
         private readonly IAvailabilityRunner _availabilityRunner;
         private int _noOfTimesToRun;
 
+        /// <summary>
+        /// Constructor method
+        /// </summary>
+        /// <param name="availabilityRunner"></param>
         public AvailabilityDecision(IAvailabilityRunner availabilityRunner)
         {
             _availabilityRunner = availabilityRunner;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="progress"></param>
-        /// <param name="fileLocation"></param>
-        /// <param name="mode"></param>
-        /// <returns>An AvailabilityResult object containing detailed information.</returns>
+        /// <inheritdoc />
         public AvailabilityResult GetAvailabilityDecision(IProgress<int> progress, string fileLocation, AnalysisMode mode)
         {
             var noOfSuccessfulRuns = GetAvailabilityNoOfSuccessfulRunsResult(progress, fileLocation, mode);
             return new AvailabilityResult
             {
                 AvailabilityScore = GetAvailabilityResultFromRuns(noOfSuccessfulRuns),
-                AvailabilityNoOfRuns = GetAvailabilityNoOfRuns(),
+                AvailabilityNoOfRuns = GetAvailabilityTotalNoOfRuns(),
                 AvailabilityNoOfSuccessfulRuns = noOfSuccessfulRuns
             };
         }
@@ -40,43 +38,29 @@ namespace AvailabilityModule
         ///  Method to test the availability of an application
         /// </summary>
         /// <param name="progress"></param>
-        /// <param name="fileLocation">Path to file.</param>
+        /// <param name="fileLocation">Path to the executable.</param>
         /// <param name="mode">Analysis mode.</param>
         /// <returns>An int representing number of executions without errors/exceptions</returns>
         private int GetAvailabilityNoOfSuccessfulRunsResult(IProgress<int> progress, string fileLocation, AnalysisMode mode)
         {
-            switch (mode)
-            {
-                case AnalysisMode.Basic:
-                    _noOfTimesToRun = 3;
-                    break;
-                case AnalysisMode.Medium:
-                    _noOfTimesToRun = 5;
-                    break;
-                case AnalysisMode.Advanced:
-                    _noOfTimesToRun = 10;
-                    break;                
-                default:
-                    throw new ArgumentException("Unknown analysis mode!");
-            }
-
+            _noOfTimesToRun = AnalysisModeMapping.GetAvailabilityMaxRuns(mode);
             return _availabilityRunner.RunExecutableMultipleTimes(progress, fileLocation, _noOfTimesToRun, TimeoutInMilliseconds, true);
         }
 
         /// <summary>
-        /// 
+        /// Get total number of times the application is tested
         /// </summary>
-        /// <returns></returns>
-        private int GetAvailabilityNoOfRuns()
+        /// <returns>Total number of runs</returns>
+        private int GetAvailabilityTotalNoOfRuns()
         {
             return _noOfTimesToRun;
         }
 
         /// <summary>
-        /// 
+        /// Get number of times the application run successfully 
         /// </summary>
-        /// <param name="noOfSuccessfulRuns"></param>
-        /// <returns></returns>
+        /// <param name="noOfSuccessfulRuns">Number of successful tests</param>
+        /// <returns>1 for Trustworthy, 0 for Inconclusive, -1 for Not Trustworthy</returns>
         private int GetAvailabilityResultFromRuns(int noOfSuccessfulRuns)
         {
             if (noOfSuccessfulRuns < _noOfTimesToRun / 2 + 1)

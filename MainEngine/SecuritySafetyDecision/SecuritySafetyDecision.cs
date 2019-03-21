@@ -8,52 +8,68 @@ namespace SecuritySafetyModule
     {
         private readonly ISecuritySafetyRunner _securitySafetyRunner;
 
+        /// <summary>
+        /// Constructor method.
+        /// </summary>
+        /// <param name="securitySafetyRunner"></param>
         public SecuritySafetyDecision(ISecuritySafetyRunner securitySafetyRunner)
         {
             _securitySafetyRunner = securitySafetyRunner;
         }
 
+        /// <inheritdoc />
         public SecuritySafetyResult GetSecuritySafetyDecision(IProgress<int> progress, string fileLocation, AnalysisMode mode)
         {
             progress.Report(1);
             var resultObject = _securitySafetyRunner.GetWinCheckSecResultObject(fileLocation);
             progress.Report(1);
-            var percentageResult = GetSecuritySafetyPercentage(resultObject, mode);
+            var percentageResult = GetSecuritySafetyScore(resultObject, mode);
 
             // -1, 0 or 1
-            int ternaryResult = GetSecuritySafetyResultFromPercentage(percentageResult, mode);
+            int ternaryResult = GetSecuritySafetyResultFromScore(percentageResult, mode);
             return new SecuritySafetyResult
             {
                 SafetyScore = ternaryResult,
                 SafetyAndSecurityPercentage = percentageResult,
-                SafetyAndSecurityPercentageBase = GetSecuritySafetyMaxPercentage(mode),
+                SafetyAndSecurityPercentageBase = GetSecuritySafetyMaximumScore(mode),
                 SecurityScore = ternaryResult,
                 WinCheckSecResultObject = resultObject
             };
         }
 
-        private static int GetSecuritySafetyResultFromPercentage(int percentage, AnalysisMode mode)
+        /// <summary>
+        /// Calculate a ternary result based on a score
+        /// </summary>
+        /// <param name="score">An int between 0 and 100</param>
+        /// <param name="mode">Basic, Medium or Advanced</param>
+        /// <returns>-1 for Not Trustworthy, 0 for Inconclusive or 1 for Trustworthy</returns>
+        private static int GetSecuritySafetyResultFromScore(int score, AnalysisMode mode)
         {
             switch (mode)
             {
                 case AnalysisMode.Basic:
-                    if (percentage > 50) return 1;
-                    if (percentage >= 40) return 0;
+                    if (score > 50) return 1;
+                    if (score >= 40) return 0;
                     return -1;
                 case AnalysisMode.Medium:
-                    if (percentage > 70) return 1;
-                    if (percentage >= 60) return 0;
+                    if (score > 70) return 1;
+                    if (score >= 60) return 0;
                     return -1;
                 case AnalysisMode.Advanced:
-                    if (percentage > 90) return 1;
-                    if (percentage >= 70) return 0;
+                    if (score > 90) return 1;
+                    if (score >= 70) return 0;
                     return -1;
                 default:
                     throw new ArgumentException("Unknown analysis mode!");
             }
         }
 
-        private static int GetSecuritySafetyMaxPercentage(AnalysisMode mode)
+        /// <summary>
+        /// Determine the maximum score based on analysis mode
+        /// </summary>
+        /// <param name="mode">Basic, Medium or Advanced</param>
+        /// <returns></returns>
+        private static int GetSecuritySafetyMaximumScore(AnalysisMode mode)
         {
             switch (mode)
             {
@@ -67,8 +83,14 @@ namespace SecuritySafetyModule
                     throw new ArgumentException("Unknown analysis mode!");
             }
         }
-        
-        private static int GetSecuritySafetyPercentage(WinCheckSecResultObject resultObject, AnalysisMode mode)
+
+        /// <summary>
+        /// Compute a score based on analysis mode and WinCheckSec security properties.
+        /// </summary>
+        /// <param name="resultObject">WinCheckSec properties</param>
+        /// <param name="mode">Basic, Medium or Advanced.</param>
+        /// <returns>A integer between 0 and 100</returns>
+        private static int GetSecuritySafetyScore(WinCheckSecResultObject resultObject, AnalysisMode mode)
         {
             if (resultObject == null) return -1;
             int percentage = 0;
@@ -95,7 +117,7 @@ namespace SecuritySafetyModule
             }
             if (mode == AnalysisMode.Medium) return percentage;
 
-            // if the mode is Advanced, compute final percentage with all properties
+            // if the mode is Advanced, compute final score with all properties
             if (resultObject.HighEntropyVa) percentage += 2;
             if (resultObject.Authenticode) percentage += 2;
             if (resultObject.SafeSeh || resultObject.DotNet)
