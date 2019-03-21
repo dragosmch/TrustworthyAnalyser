@@ -38,6 +38,7 @@
             this.basicModeButton = new System.Windows.Forms.RadioButton();
             this.instructionsLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.saveReportButton = new System.Windows.Forms.Button();
             this.securitySafetyResultLabel = new System.Windows.Forms.Label();
             this.availabilityResultLabel = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.openButton = new System.Windows.Forms.Button();
             this.availabilityExplanation = new System.Windows.Forms.ToolTip(this.components);
             this.securitySafetyExplanation = new System.Windows.Forms.ToolTip(this.components);
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -159,6 +159,13 @@
             this.welcomeLabel.TabIndex = 2;
             this.welcomeLabel.Text = "Welcome to Trustworthy Analyser!";
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(258, 88);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(269, 23);
+            this.progressBar.TabIndex = 9;
+            // 
             // saveReportButton
             // 
             this.saveReportButton.Location = new System.Drawing.Point(418, 415);
@@ -248,13 +255,6 @@
             this.openButton.Text = "Open";
             this.openButton.UseVisualStyleBackColor = true;
             this.openButton.Click += new System.EventHandler(this.OpenButton_Click);
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(308, 88);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(100, 23);
-            this.progressBar.TabIndex = 9;
             // 
             // UserInterface
             // 

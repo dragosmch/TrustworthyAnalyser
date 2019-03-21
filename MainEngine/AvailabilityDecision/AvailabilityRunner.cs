@@ -30,6 +30,7 @@ namespace AvailabilityModule
             {
                 for (int i = 0; i < noOfRuns; i++)
                 {
+                    progress.Report(1);
                     resultOfRuns += RunExecutable(fileLocation, timeout);
                     progress.Report(1);
                 }
@@ -59,7 +60,7 @@ namespace AvailabilityModule
             {
                 using (var executableProcess = Process.Start(processStartInfo))
                 {
-                    Thread.Sleep(1000);
+                    //Thread.Sleep(1000);
                     // Kill the process if is running more than a threshold
                     if (executableProcess == null || executableProcess.WaitForExit(timeout)) return 0;
 

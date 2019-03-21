@@ -1,12 +1,11 @@
-﻿using System;
-using System.Diagnostics;
+﻿using LibraryModule;
+using MainEngine;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LibraryModule;
-using MainEngine;
 
 namespace FormsModule
 {
@@ -49,30 +48,29 @@ namespace FormsModule
         /// <param name="e">Event arguments.</param>
         private async void AnalyseButton_Click(object sender, EventArgs e)
         {
-            // Remove stop watch before submission
-            var sw = new Stopwatch();
-            sw.Start();
             HideResults();
             string fileLocation = fileLocationBox.Text;
             if (!string.IsNullOrEmpty(fileLocation))
             {
+                analyseButton.Enabled = false;
                 var mode = GetModeFromModeButtons();
                 var progress = InitialiseProgressBar(mode);
+                await Task.Run(() =>
+                        _trustworthyResult = _trustworthyAnalyser.ReturnResults(progress, fileLocation, mode))
+                    .ConfigureAwait(true);
 
-                analyseButton.Enabled = false;
-                await Task.Run(() => 
-                    _trustworthyResult = _trustworthyAnalyser.ReturnResults(progress, fileLocation, mode)).ConfigureAwait(true);
                 if (_trustworthyResult == null)
                 {
-                    ShowFailureMessage("Please select an executable file.", "Cannot analyse this file");
+                    ShowFailureMessage("Please select an executable file.", "Cannot analyse this file.");
                     analyseButton.Enabled = true;
                     return;
                 }
+
                 DisplayAllResults(_trustworthyResult);
             }
+
             analyseButton.Enabled = true;
             saveReportButton.Visible = true;
-            Console.WriteLine(sw.ElapsedMilliseconds);
         }
 
         /// <summary>
@@ -131,16 +129,14 @@ namespace FormsModule
         }
 
         /// <summary>
-        /// Compute maximum progress value following the algorithm:
-        /// 2 * (number of availability runs + 1)
-        /// where 1 is the security safety step
+        /// Compute maximum progress value based on how many availability runs
+        /// (longest process in the analysis)
         /// </summary>
         /// <param name="mode">Basic, Medium or Advanced.</param>
         /// <returns>Upper bound of the progress bar value</returns>
         private static int GetMaximumProgressBarValueFromMode(AnalysisMode mode)
         {
-            int progressStepsFromAvailability = AnalysisModeMapping.GetAvailabilityMaxRuns(mode);
-            return 2 * (progressStepsFromAvailability + 1);
+            return AnalysisModeMapping.GetAvailabilityMaxRuns(mode) * 2;
         }
 
         /// <summary>

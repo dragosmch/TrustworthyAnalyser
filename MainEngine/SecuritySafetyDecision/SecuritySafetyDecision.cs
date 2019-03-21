@@ -20,13 +20,13 @@ namespace SecuritySafetyModule
         /// <inheritdoc />
         public SecuritySafetyResult GetSecuritySafetyDecision(IProgress<int> progress, string fileLocation, AnalysisMode mode)
         {
-            progress.Report(1);
+            //progress.Report(1);
             var resultObject = _securitySafetyRunner.GetWinCheckSecResultObject(fileLocation);
-            progress.Report(1);
             var percentageResult = GetSecuritySafetyScore(resultObject, mode);
 
             // -1, 0 or 1
             int ternaryResult = GetSecuritySafetyResultFromScore(percentageResult, mode);
+           // progress.Report(1);
             return new SecuritySafetyResult
             {
                 SafetyScore = ternaryResult,
