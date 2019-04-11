@@ -1,0 +1,12 @@
+File: C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\MalwareBytesInstaller.exe
+Time: 21/03/2019 15:03:19
+Successful availability runs: 3/3
+Security and Safety protection score: 80/80
+Safe compilation settings:
+DynamicBase: True
+Aslr: True
+Nx: True
+Seh: True
+
+
+Final result: Trustworthy

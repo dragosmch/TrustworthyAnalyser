@@ -1,0 +1,19 @@
+File: C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\PhotoScapeSetup.exe
+Time: 11/04/2019 12:29:07
+Successful availability runs: 10/10
+Security and Safety protection score: 77/100
+Safe compilation settings:
+DynamicBase: False
+Aslr: True
+Nx: True
+Seh: True
+Isolation: True
+Gs: True
+Cfg: True
+HighEntropyVa: False
+ForceIntegrity: False
+Rfg: True
+SafeSeh: True
+Authenticode: True
+
+Final result: Inconclusive

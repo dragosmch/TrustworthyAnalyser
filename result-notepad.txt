@@ -1,0 +1,19 @@
+File: C:\Users\Dragos\Documents\GitHub\TrustworthyAnalyser\TestFiles\Notepad2_4.2.25_x64.exe
+Time: 10/04/2019 17:31:37
+Successful availability runs: 10/10
+Security and Safety protection score: 25/100
+Safe compilation settings:
+DynamicBase: False
+Aslr: False
+Nx: False
+Seh: True
+Isolation: True
+Gs: False
+Cfg: False
+HighEntropyVa: False
+ForceIntegrity: False
+Rfg: False
+SafeSeh: False
+Authenticode: False
+
+Final result: NotTrustworthy
